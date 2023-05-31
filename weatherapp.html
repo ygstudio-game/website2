@@ -358,7 +358,7 @@
       CitynameData.push(Cityname);
       window.localStorage.setItem("cityname", CitynameData)
         try {
-         let url = `http://api.weatherapi.com/v1/forecast.json?key=25f2c3f6c732489d9f6133335231703&q=${Cityname}&aqi=no`;
+         let url = `https://api.weatherapi.com/v1/forecast.json?key=25f2c3f6c732489d9f6133335231703&q=${Cityname}&aqi=no`;
             let response = await fetch(url);
              data = await response.json(); 
              fill_data();
