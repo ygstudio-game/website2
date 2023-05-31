@@ -1,0 +1,9 @@
+     @media only screen and (max-width: 990px) {
+    .landing section p{
+    font-size: 3vh;
+    padding: 0.2vh;
+    margin-left:  2.8vh;
+    margin-right:  2.8vh;
+    text-align: center;
+    }}
+    

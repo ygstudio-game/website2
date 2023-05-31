@@ -1,0 +1,38 @@
+ 
+*{
+padding: 0%;
+margin: 0;
+transition: all 450ms linear;
+}
+html,
+body {
+position: relative;
+height: 100%;
+scroll-behavior: smooth;
+overflow-x: hidden;
+} 
+body {
+background: rgb(26, 23, 23) !important;
+font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+font-size: 14px;
+color: rgb(255, 255, 255) !important;
+margin: 0;
+padding: 0;
+  /* font-family: 'megrim'; */
+  /* font-family: 'neontubes'; */
+    /* font-family: 'Nosifer'; */
+  /* font-family: 'Lato';*/
+   /*font-family: 'Varela Round'; */
+    /* font-family: 'Faster One'; */
+    font-family: 'Nunito';
+    /* font-family: 'Codystar' */
+    /* font-family: 'Raleway Dots'; */
+}
+::selection{
+ color: black;
+ background-color: #0f0;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}

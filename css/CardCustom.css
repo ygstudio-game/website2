@@ -1,0 +1,87 @@
+     .card {
+          transition: all 450ms ease-in;
+          margin: 5vh 0;
+          height: 76vh;
+     }
+
+     .card.onFocus_Main:hover {
+          /* animation : card-animation 1600ms cubic-bezier(1, 0.4, 0.96, 0.99) 0s 1 normal forwards; */
+          animation: spaceboots 1 200ms linear 0 forwards;
+          z-index: 3;
+          transform: scale(1.12);
+          box-shadow: 0 0 0.2vw 0.2vw #944848, inset 0vw 0vw 2.2vw 1.5vw black;
+     }
+
+     .card.onFocus_Main:hover img {
+          transform: scale(1.15) translateX(1.4vw) translateY(-1.6vh);
+          border-radius: 35%;
+          box-shadow: inset 0vw 0vw 2.8vw 2vw #7e0505, -0.1vw 0.1vw 0.4vw 0.3vw #6e5252de;
+     }
+
+     .card.onFocus_Main p.click_on_para {
+          color: #000000;
+          background-color: rgb(0 255 64 / 86%);
+          transform: scale(1.25);
+          border-radius: 15% 15% 2% 2%;
+          padding: 2vh;
+          animation: hue_roatate 25s linear infinite;
+          text-align: center;
+          max-height: 41vh;
+          margin-bottom: 8vh;
+     }
+
+     .card.onFocus_Main .Dump_ordinarry_for_shadow.click_on_para::after {
+          /* position: absolute;
+content: "";
+top: -4vw;
+left: -3vw;
+width: 160%;
+height: 160%;
+background-color: #73c708;
+ z-index: -1;
+animation: Blurhue_roatate 20s linear infinite; */
+     }
+
+     .card.onFocus_Main img:hover {
+          transform: scale(1.2);
+          border: 0.26vw solid darkred;
+          box-shadow: 0 0 0vw 0.2vw rgb(255, 255, 255), 0 0 2vw 1vw rgb(223, 223, 28);
+          border-radius: 0.5vw;
+          margin-bottom: 3.8vh;
+     }
+
+     .card img {
+          height: 18vh;
+     }
+
+     .card a,
+     .card p {
+          transition: all 500ms linear, scale 500ms 550ms linear;
+          color: inherit;
+     }
+
+     .card p.card-text {
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          display: -webkit-box;
+          max-height: 36vh;
+     }
+
+     .Dump_ordinarry_for_shadow {
+          position: absolute;
+          top: 20vh;
+          z-index: -1;
+     }
+
+     @media only screen and (max-width: 768px) {
+          .card.onFocus_Main img:hover {
+               transform: scale(1.05);
+               border: 0.26vw solid darkred;
+               box-shadow: 0 0 0vw 0.2vw rgb(255, 255, 255), 0 0 2vw 1vw rgb(223, 223, 28);
+               border-radius: 0.01vw;
+          }
+
+          .card.onFocus_Main:hover {
+               transform: scale(1.05);
+          }
+     }

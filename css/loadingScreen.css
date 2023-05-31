@@ -1,0 +1,235 @@
+body.loadingStrated
+{
+    overflow: hidden;
+}
+   .Outerloader {
+    position: relative;
+    width: 26%;
+    height: 26%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 25vh;
+     
+ }
+ .Outerloader  .OuterRing{
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     border-radius: 50%;
+     background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    animation: animatation_hueRotate 12s linear infinite;
+
+ }
+
+.Outerloader .OuterRing:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    border-radius: 50%;
+     filter: blur(30px);
+    transform: scale(1.2);
+}
+
+.Outerloader .face {
+    position: absolute;
+    border: 2px solid #121212;
+}
+
+.Outerloader .face.face1 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #090909;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    border-left: 2px solid #ffff00;
+    border-top: 2px solid #ffff00;
+    animation: move 6s linear infinite;
+}
+
+.Outerloader .face.face2 {
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background-color: #090909;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    border-right: 2px solid #03a9f4;
+    border-bottom: 2px solid #03a9f4;
+    animation: move1 6s linear infinite;
+}
+
+.Outerloader .face .circle {
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    transform-origin: left;
+}
+
+.Outerloader .face.face1 .circle {
+    transform: rotate(-45deg);
+}
+
+.Outerloader .face.face2 .circle {
+    transform: rotate(-45deg);
+}
+
+.Outerloader .face .circle::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: -4px;
+    right: -6px;
+}
+
+.Outerloader .face.face1 .circle::before {
+    background-color: #ff0;
+    box-shadow: 0 0 20px #ff0, 0 0 40px #ff0, 0 0 60px #ff0, 0 0 80px #ff0, 0 0 100px #ff0, 0 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.Outerloader .face.face2 .circle::before {
+    background-color: #03a9f4;
+    box-shadow: 0 0 20px #03a9f4, 0 0 40px #03a9f4, 0 0 60px #03a9f4, 0 0 80px #03a9f4, 0 0 100px #03a9f4, 0 0 0 5px rgba(3, 169, 244, 0.1);
+}
+
+
+.Middleloader {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    animation: animatation_hueRotate 8s linear infinite;
+}
+
+.Middleloader:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    bottom: 6px;
+    right: 6px;
+    background-color: #090909;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+.Middleloader:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(100px);
+    -webkit-filter: blur(100px);
+} 
+
+.loadingScreen{
+    position: fixed;
+     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    top: -100vh;
+    left: 0;
+}
+.loadingScreen.Strated{
+    height: 100vh; 
+    z-index: 45;
+    top: 0vh;
+}
+.loadingScreen.ended{
+    height: 0; 
+}
+.loadingScreen section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vw;
+    width: 100vw;
+    background: #090909;
+ }
+
+
+.Mainloading {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    animation: hue_roatate 10s linear infinite;
+
+}
+
+.Mainloading .blocks {
+    position: absolute;
+    /*forrectriangular*//*width: 12%;
+    height: 5%;
+    border-radius: 12px;
+    *//*fordot*/width: 5%;
+    height: 5%;
+    border-radius: 100%;
+    background: #050c09;
+    left: 50%;
+    transform: rotate(calc(18deg * var(--i)));
+    transform-origin: 0 1000%;
+    animation: animate  5.7s ease-in-out infinite;
+    animation-delay: calc(0.15s * var(--i));
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+
+
+.Mainloading h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Megrim';
+    font-size: 2vw;
+    letter-spacing: 2px;
+    animation: animateText 6s ease-in-out infinite;
+    animation-delay: -3s;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0,
+        0 0 15px #0f0,
+        0 0 30px #0f0,
+        0 0 65px #0f0,
+        0 0 90px #0f0;
+}
+@media (max-width: 768px) {
+    .Outerloader {
+    top: 35vh;
+    left: 30vw;
+}
+.loadingScreen { 
+    display: block; 
+}
+.loadingScreen section{
+    margin: auto;
+    height: 100vh;
+    width: 100vh;
+    justify-content: flex-start;
+     }
+.Mainloading h3 {
+    font-size: 2.2vw;
+}
+}

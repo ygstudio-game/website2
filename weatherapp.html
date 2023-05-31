@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather app</title>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="bootstrap.min.js">
+  <link rel="stylesheet" href="popper.min.js">
+  <link rel="stylesheet" href="bootstrap.min.css">
+
+
+  <link rel="stylesheet" href="css/weatherappcss.css" />
+  <link rel="stylesheet" type="text/css" href="css/allAnimation.css" />
+  <link rel="stylesheet" type="text/css" href="css/AllFonts.css" />
+  <link rel="stylesheet" type="text/css" href="css/bcakgroundimg.css" />
+  <link rel="stylesheet" type="text/css" href="css/foooter.css" />
+  <link rel="stylesheet" type="text/css" href="css/navbarCustom.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.htm" target="_blank" rel="noopener noreferrer">YS-WEBSITE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.htm" target="_blank"
+              rel="noopener noreferrer">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#aboutsection">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#content">Content</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="contract.htm" target="_blank"
+              rel="noopener noreferrer">Contrat Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="https://ysblogs-homepage.herokuapp.com/"
+              target="_blank" rel="noopener noreferrer">Developer Info</a>
+          </li>
+        </ul>
+        <form class="d-flex d-flex-dark">
+          <input class="form-control me-2 form-comtrol-dark bg-dark text-white" type="search" placeholder="Search"
+            aria-label="Search" />
+
+          <button class="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="weather-side">
+      <div class="weather-gradient"></div>
+      <div class="date-container">
+        <h2 class="date-dayname">Tuesday</h2>
+        <span class="time h2">02:38:39 pm</span >
+          <span class="date-day">15 Jan 2023</span>
+          <i class="location-icon" data-feather="map-pin"></i>
+          <span class="location">Mumbai, IN</span>
+      </div>
+      <div class="weather-container">
+        <i class="weather-icon" data-feather="sun"></i>
+        <h1 class="weather-temp">29°C</h1>
+        <h3 class="weather-desc">Sunny</h3>
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="today-info-container">
+        <div class="today-info">
+          <div class="precipitation">
+            <span class="title">PRECIPITATION</span><span class="value">0 %</span>
+            <div class="clear"></div>
+          </div>
+          <div class="humidity">
+            <span class="title">HUMIDITY</span><span class="value">34 %</span>
+            <div class="clear"></div>
+          </div>
+          <div class="wind">
+            <span class="title">WIND</span><span class="value">0 km/h</span>
+            <div class="clear"></div>
+          </div>
+        <div class="visibility">
+            <span class="title">VISIBILITY</span><span class="value">0 km</span>
+            <div class="clear"></div>
+          </div>
+           <div class="pressure">
+            <span class="title">PRESSURE</span><span class="value">0 km</span>
+            <div class="clear"></div>
+          </div>
+          <div class="uv">
+            <span class="title">UV RAYS</span><span class="value">0 km</span>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="week-container">
+        <ul class="week-list">
+          <li class="activeslide">
+
+            <div class="dateTemp">
+              <i class="day-icon deactivate" data-feather="sun"></i>
+              <span class="day-name">Tue</span><span class="day-temp">29°C</span>
+            </div>
+
+          </li>
+          <li>
+            <i class="day-icon" data-feather="cloud"></i><span class="day-name">Wed</span><span
+              class="day-temp">21°C</span>
+          </li>
+          <li>
+            <i class="day-icon" data-feather="cloud-snow"></i><span class="day-name">Thu</span><span
+              class="day-temp">08°C</span>
+          </li>
+          <li>
+            <i class="day-icon" data-feather="cloud-rain"></i><span class="day-name">Fry</span><span
+              class="day-temp">19°C</span>
+          </li>
+          <div class="clear"></div>
+        </ul>
+      </div>
+      <div class="search-wrapper"><div class="input-suggestions"> 
+          </div>
+        <div class="input-holder">
+
+          <input type="text"  autocomplete="true" class="search-input inputcityname" placeholder="Address/Cityname/Country ..." />
+          <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        </div>
+        <span class="close"  onclick="searchToggle(this, event);"></span>
+      </div>
+      <!-- <div class="location-container">
+          <button class="location-button">
+            <i data-feather="map-pin"></i><span>Change location</span>
+          </button>
+        </div> -->
+    </div>
+  </div>
+  <div class=" deactivate contentoncurent">
+    <div class="weather-side  ">
+      <div class="weather-gradient"></div>
+      <div class="date-container">
+        <h2 class="date-dayname">Tuesday</h2>
+        <span class="time h2">02:38:39 pm</span <span class="date-day">15 Jan 2023</span><i class="location-icon"
+          data-feather="map-pin"></i><span class="location">Paris, FR</span>
+      </div>
+      <div class="weather-container">
+        <i class="weather-icon" data-feather="sun"></i>
+        <h1 class="weather-temp">29°C</h1>
+        <h3 class="weather-desc">Sunny</h3>
+      </div>
+      <span class="outer closebutton">
+        <div class="inner">
+          <label>Back</label>
+        </div>
+      </span>
+    </div>
+    <div class="Information  ">
+      <span class="heading headingsunrise"> sunrise:- <span class="sunrise">6:29</span></span>
+      <span class="heading headingsunset"> Sunset :- <span class="sunset">6:29</span></span>
+      <span class="heading headingmoonrise"> Moonrise :- <span class="moonrise">6:29</span></span>
+      <span class="heading headingmoonset"> Moonset :- <span class="moonset">6:29</span></span>
+      <span class="heading headingmax-temp""> Max-temp" :- <span class="max_temp"">6:29</span></span>
+      <span class=" heading headingmin-temp"> Min-temp :- <span class="min_temp">6:29</span></span>
+      <span class="heading headingcloud"> Cloud :- <span class="cloud">6:29</span></span>
+      <span class="heading headinghumidity"> Humidity :- <span class="humidity">6:29</span></span>
+      <span class="heading headingdewpoint"> Dewpoint :- <span class="dewpoint">6:29</span></span>
+      <span class="heading headingmaxwind"> Max-wind :- <span class="maxwind">6:29</span></span>
+      <span class="heading headingminwind"> Min-wind :- <span class="minwind">6:29</span></span>
+      <span class="heading headinguv"> UV :- <span class="uv">6:29</span></span>
+      <span class="heading headingcondition"> Condition :- <span class="condition">6:29</span></span>
+      <span class="heading headingmoonillumination"> Moonillumination :- <span
+          class="moonillumination">6:29</span></span>
+      <span class="heading headingmoonpase"> Moonphase :- <span class="moonphase">6:29</span></span>
+
+      <span class="heading headingcofsnow"> chanes of snow :- <span class="cofsnow">6:29</span></span>
+      <span class="heading headingcofrain"> chanes of rain :- <span class="cofrain">6:29</span></span>
+
+    </div>
+ 
+  </div>
+  <footer>
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="Social_icon">
+      <li>
+        <a href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+      </li>
+    </ul>
+    <ul class="menu">
+      <li><a href="index.htm">Home</a></li>
+      <li>
+        <a href="about.htm" target="_blank" rel="noopener noreferrer">About</a>
+      </li>
+      <li>
+        <a href="https://ysblogs-homepage.herokuapp.com/" target="_blank" rel="noopener noreferrer">Developer</a>
+      </li>
+      <li>
+        <a href="contract.htm" target="_blank" rel="noopener noreferrer">Contract</a>
+      </li>
+    </ul>
+    <p>&copy; 2022 Yadnyesh borole || All Rights Reserved</p>
+  </footer>
+</body>
+<script src="vanilla-tilt.js"></script>
+<script>
+  function  dayofweek( y,  m,  d)
+{
+   y= parseInt(y);
+   m= parseInt(m);
+   d= parseInt(d);
+  let t = [ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 ];
+  y -= m < 3;
+    return (y + y/4 - y/100 + y/400 + t[m-1] + d) % 7;}
+ 
+</script>
+<script>
+    function searchToggle(obj, evt) {
+    var container = $(obj).closest('.search-wrapper');
+    var container2 = $('.today-info');
+    if (!container.hasClass('active')) {
+      container.addClass('active');
+      container2.addClass('active');
+      evt.preventDefault();
+    }
+    else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+      container.removeClass('active');
+      container2.removeClass('active');
+      // clear input
+      container.find('.search-input').val('');
+    }
+  }
+  let mediaqurrt = window.innerWidth;
+  VanillaTilt.init(document.querySelector(".weather-gradient"), {
+    max: 15,
+    speed: 350,
+    glare: true,
+    "max-glare": 0.5,
+    transition: true,
+    reset: true,
+  });
+  active = document.querySelector(".activeslide");
+  contentoncurent = document.querySelector(".contentoncurent");
+  closebutton = document.querySelector(".closebutton");
+  active.addEventListener("click", () => {
+    contentoncurent.classList.add("activatedcontent");
+    contentoncurent.classList.remove("deactivate");
+
+  });
+  closebutton.addEventListener("click", () => {
+    contentoncurent.classList.remove("activatedcontent");
+    contentoncurent.classList.add("deactivate");
+  });
+  
+  //main function 
+  const inputcityname = document.querySelector(".inputcityname");
+  const searchcity = document.querySelector(".search-icon");
+  const Dis_time = document.querySelectorAll(".time");
+  const Dis_day = document.querySelectorAll(".date-dayname");
+  const Dis_date = document.querySelectorAll(".date-day");
+  const Dis_location = document.querySelectorAll(".location");
+  const Dis_temp = document.querySelectorAll(".weather-temp");
+  const Dis_weatherdesc = document.querySelectorAll(".weather-desc");
+  const Dis_humidity = document.querySelector(".humidity").children[1];
+  const Dis_wind = document.querySelector(".wind").children[1];
+  const Dis_visibility = document.querySelector(".visibility").children[1];
+  const Dis_pressure = document.querySelector(".pressure").children[1];
+  const Dis_uv = document.querySelector(".uv").children[1];
+  const Dis_PRECIPITATION= document.querySelector(".precipitation").children[1];
+
+  const headingsunrise = document.querySelector(".headingsunrise").children[0];
+  const headingsunset = document.querySelector(".headingsunset").children[0];
+  const headingmoonrise = document.querySelector(".headingmoonrise").children[0];
+  const headingmoonset = document.querySelector(".headingmoonset").children[0];
+  const headingmax_temp = document.querySelector(".headingmax-temp").children[0];
+  const headingmin_temp = document.querySelector(".headingmin-temp").children[0];
+  const headingcloud = document.querySelector(".headingcloud").children[0];
+  const headinghumidity = document.querySelector(".headinghumidity").children[0];
+  const headingmaxwind = document.querySelector(".headingmaxwind").children[0];
+  const headingminwind = document.querySelector(".headingminwind").children[0];
+  const headingdewpoint = document.querySelector(".headingdewpoint").children[0];
+  const headingcondition = document.querySelector(".headingcondition").children[0];
+  const headingmoonillumination = document.querySelector(" .headingmoonillumination").children[0];
+  const headingmoonpase = document.querySelector(".headingmoonpase").children[0];
+  const headingcofsnow = document.querySelector(".headingcofsnow").children[0];
+  const headingcofrain = document.querySelector(".headingcofrain").children[0];
+  const headinguv = document.querySelector(".headinguv").children[0];
+ 
+  // const Dis_weatherdesc = document.querySelector(".inputcityname");
+  // const Dis_weatherdesc = document.querySelector(".inputcityname");
+    let Cityname ,CitynameData = [],data , success;
+    //  let sunset ,sunrise ,moonrise ,moonset,max_temp , min_temp, cloud , humidity, dewpoint ,maxwind,minwind,condition,moonillumination , moonphase,cofsnow,cofrain
+    
+    let headings = document.querySelectorAll(".heading > span");
+    let forwards = false
+    let String_date ,String_day,String_temp,String_location,String_time,String_desec,String_weather,String_visibility,String_uv,String_humidity,String_pressure,String_wind,String_dewpoint,String_PRECIPITATION,String_Cloud,String_maxwind,String_minwind,String_Moonillumination ,String_Moonphase ,String_cOFsnow,String_cOFrain,
+    String_sunrise,String_sunset,String_max_temp,String_min_temp,String_moonset,String_moonrise
+          let datel = new Date(0);
+      inputcityname.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    forwards = false
+    getinfo();
+    getinfo2();
+  }
+});
+      searchcity.addEventListener("click", ()=>{
+        forwards = false;
+    getinfo();
+}); 
+ getinfo = async()=>{
+    event.preventDefault();
+     Cityname = (forwards ? Cityname : inputcityname.value);
+    if (Cityname === "" ) { 
+      
+    }
+    else {
+      CitynameData.push(Cityname);
+      window.localStorage.setItem("cityname", CitynameData)
+        try {
+         let url = `http://api.weatherapi.com/v1/forecast.json?key=25f2c3f6c732489d9f6133335231703&q=${Cityname}&aqi=no`;
+            let response = await fetch(url);
+             data = await response.json(); 
+             fill_data();
+             success= true;
+             alert("Successfully loaded data of city: " + Cityname);
+             
+           }
+        catch{
+          console.log("error fetching weather");
+          success= false;
+
+        }
+        }
+        }
+ 
+
+
+
+
+         fill_data = ()=>{
+ 
+        let Hours,Second,Mintues;
+        tempDate = data.current.last_updated;
+        datel = new Date(tempDate.slice(0,4),tempDate.slice(5,7),tempDate.slice(8,10),tempDate.slice(11,13),tempDate.slice(14,16), Math.floor((Math.random() * 60) + 1));
+   
+                { String_date= data.location.localtime.slice(0,10);}
+2023-03-24
+{daynum = Math.floor(dayofweek(String_date.slice(0,4),String_date.slice(5,7),String_date.slice(8,10)));
+switch(daynum){
+        case 0: String_day ="Sunday";
+        break;
+        case 1: String_day ="Monday";
+        break;
+        case 2: String_day ="Tuesday";
+        break;
+        case 3: String_day ="Wednesday";
+        break;
+        case 4: String_day ="Thursday";
+        break;
+        case 5: String_day ="Friday";
+        break;
+        case 6: String_day ="Saturday";
+        break;
+    }
+  }
+  currenthour = datel.getHours();
+ { String_temp = data.current.temp_c + "°C"}
+{String_PRECIPITATION = Math.round(data.current.precip_mm *100)+ "% mm";}
+{String_humidity = data.current.humidity + " %";}
+{String_wind = data.current.wind_kph + " km/hr" ;}
+{String_pressure = data.current.pressure_mb + " mb";}
+{String_uv = data.current.uv ; }
+{String_desec = data.current.condition.text ; }
+{String_visibility = data.current.vis_km + " km" ; }
+{String_location = data.location.name +"," +data.location.country; }
+{String_sunrise = data.forecast.forecastday[0].astro.sunrise} 
+{String_sunset = data.forecast.forecastday[0].astro.sunset} 
+{String_moonrise = data.forecast.forecastday[0].astro.moonrise} 
+{String_moonset = data.forecast.forecastday[0].astro.moonset} 
+{String_max_temp = data.forecast.forecastday[0].day.maxtemp_c + "°C"} 
+{String_min_temp = data.forecast.forecastday[0].day.mintemp_c + "°C"} 
+{String_dewpoint = data.forecast.forecastday[0].hour[currenthour].dewpoint_c }
+{String_uv = data.forecast.forecastday[0].day.uv}
+{String_Cloud = data.current.cloud *100 }
+{String_maxwind = data.forecast.forecastday[0].day.maxwind_kph + "km/hr"}
+{String_minwind = data.forecast.forecastday[0].day.minwind_kph + "km/hr"}
+{String_Moonillumination = data.forecast.forecastday[0].astro.moon_illumination}
+{String_Moonphase = data.forecast.forecastday[0].astro.moon_phase }
+{String_cOFrain = data.forecast.forecastday[0].day.daily_chance_of_rain}
+{String_cOFsnow = data.forecast.forecastday[0].day.daily_chance_of_snow}
+
+ 
+ headingsunrise.innerHTML= String_sunrise;
+headingsunset.innerHTML= String_sunset;
+headingmoonrise.innerHTML= String_moonrise;
+headingmoonset.innerHTML= String_moonset;
+headingmax_temp.innerHTML= String_max_temp;
+headingmin_temp.innerHTML= String_min_temp;
+headingcloud.innerHTML= String_Cloud
+ headinghumidity.innerHTML= String_humidity;
+headingdewpoint.innerHTML= String_dewpoint;
+ headingmaxwind.innerHTML= String_maxwind;
+headingcondition.innerHTML= String_desec;
+headingmoonillumination.innerHTML= String_Moonillumination;
+headingmoonpase.innerHTML= String_Moonphase;
+headingcofsnow.innerHTML= String_cOFsnow;
+headingcofrain.innerHTML= String_cOFrain;
+headingminwind.innerHTML= String_minwind;
+headinguv.innerHTML= String_uv;
+
+
+Dis_day.forEach(element => {element.innerHTML= String_day;});
+Dis_temp.forEach(element => {element.innerHTML= String_temp;});
+Dis_date.forEach(element => {element.innerHTML= String_date;});
+Dis_humidity.innerHTML= String_humidity;
+Dis_PRECIPITATION.innerHTML= String_PRECIPITATION;
+Dis_wind.innerHTML= String_wind;
+Dis_pressure.innerHTML= String_pressure;
+Dis_uv.innerHTML= String_uv;
+Dis_visibility.innerHTML= String_visibility; 
+ Dis_location.forEach(element => {element.innerHTML= String_location;});
+        };
+
+
+ 
+
+
+
+//  data = {
+//     "location": {
+//     "name": "Pune",
+//     "region": "Maharashtra",
+//     "country": "India",
+//     "lat": 18.53,
+//     "lon": 73.87,
+//     "tz_id": "Asia/Kolkata",
+//     "localtime_epoch": 1679664953,
+//     "localtime": "2023-03-24 19:05"
+//     },
+//     "current": {
+//     "last_updated_epoch": 1679664600,
+//     "last_updated": "2023-03-24 19:00",
+//     "temp_c": 26.1,
+//     "temp_f": 79.0,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 13.9,
+//     "wind_kph": 22.3,
+//     "wind_degree": 300,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1010.0,
+//     "pressure_in": 29.82,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 47,
+//     "cloud": 5,
+//     "feelslike_c": 26.5,
+//     "feelslike_f": 79.7,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "uv": 1.0,
+//     "gust_mph": 17.2,
+//     "gust_kph": 27.7
+//     },
+//     "forecast": {
+//     "forecastday": [
+//     {
+//     "date": "2023-03-24",
+//     "date_epoch": 1679616000,
+//     "day": {
+//     "maxtemp_c": 35.7,
+//     "maxtemp_f": 96.3,
+//     "mintemp_c": 19.3,
+//     "mintemp_f": 66.7,
+//     "avgtemp_c": 26.2,
+//     "avgtemp_f": 79.1,
+//     "maxwind_mph": 17.0,
+//     "maxwind_kph": 27.4,
+//     "totalprecip_mm": 0.0,
+//     "totalprecip_in": 0.0,
+//     "totalsnow_cm": 0.0,
+//     "avgvis_km": 10.0,
+//     "avgvis_miles": 6.0,
+//     "avghumidity": 46.0,
+//     "daily_will_it_rain": 0,
+//     "daily_chance_of_rain": 0,
+//     "daily_will_it_snow": 0,
+//     "daily_chance_of_snow": 0,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "uv": 7.0
+//     },
+//     "astro": {
+//     "sunrise": "06:36 AM",
+//     "sunset": "06:46 PM",
+//     "moonrise": "08:21 AM",
+//     "moonset": "09:26 PM",
+//     "moon_phase": "Waxing Crescent",
+//     "moon_illumination": "7",
+//     "is_moon_up": 0,
+//     "is_sun_up": 0
+//     },
+//     "hour": [
+//     {
+//     "time_epoch": 1679596200,
+//     "time": "2023-03-24 00:00",
+//     "temp_c": 21.8,
+//     "temp_f": 71.2,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 4.5,
+//     "wind_kph": 7.2,
+//     "wind_degree": 286,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.87,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 64,
+//     "cloud": 2,
+//     "feelslike_c": 21.8,
+//     "feelslike_f": 71.2,
+//     "windchill_c": 21.8,
+//     "windchill_f": 71.2,
+//     "heatindex_c": 24.5,
+//     "heatindex_f": 76.1,
+//     "dewpoint_c": 14.7,
+//     "dewpoint_f": 58.5,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.7,
+//     "gust_kph": 10.8,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679599800,
+//     "time": "2023-03-24 01:00",
+//     "temp_c": 21.3,
+//     "temp_f": 70.3,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 3.6,
+//     "wind_kph": 5.8,
+//     "wind_degree": 286,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1011.0,
+//     "pressure_in": 29.85,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 66,
+//     "cloud": 2,
+//     "feelslike_c": 21.3,
+//     "feelslike_f": 70.3,
+//     "windchill_c": 21.3,
+//     "windchill_f": 70.3,
+//     "heatindex_c": 24.4,
+//     "heatindex_f": 75.9,
+//     "dewpoint_c": 14.7,
+//     "dewpoint_f": 58.5,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 5.6,
+//     "gust_kph": 9.0,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679603400,
+//     "time": "2023-03-24 02:00",
+//     "temp_c": 20.7,
+//     "temp_f": 69.3,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 4.7,
+//     "wind_kph": 7.6,
+//     "wind_degree": 296,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1011.0,
+//     "pressure_in": 29.84,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 73,
+//     "cloud": 1,
+//     "feelslike_c": 20.7,
+//     "feelslike_f": 69.3,
+//     "windchill_c": 20.7,
+//     "windchill_f": 69.3,
+//     "heatindex_c": 20.7,
+//     "heatindex_f": 69.3,
+//     "dewpoint_c": 15.6,
+//     "dewpoint_f": 60.1,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 7.2,
+//     "gust_kph": 11.5,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679607000,
+//     "time": "2023-03-24 03:00",
+//     "temp_c": 20.3,
+//     "temp_f": 68.5,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 5.4,
+//     "wind_kph": 8.6,
+//     "wind_degree": 294,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1010.0,
+//     "pressure_in": 29.83,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 74,
+//     "cloud": 2,
+//     "feelslike_c": 20.3,
+//     "feelslike_f": 68.5,
+//     "windchill_c": 20.3,
+//     "windchill_f": 68.5,
+//     "heatindex_c": 20.3,
+//     "heatindex_f": 68.5,
+//     "dewpoint_c": 15.4,
+//     "dewpoint_f": 59.7,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 8.5,
+//     "gust_kph": 13.7,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679610600,
+//     "time": "2023-03-24 04:00",
+//     "temp_c": 19.9,
+//     "temp_f": 67.8,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 5.8,
+//     "wind_kph": 9.4,
+//     "wind_degree": 295,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1010.0,
+//     "pressure_in": 29.83,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 74,
+//     "cloud": 1,
+//     "feelslike_c": 19.9,
+//     "feelslike_f": 67.8,
+//     "windchill_c": 19.9,
+//     "windchill_f": 67.8,
+//     "heatindex_c": 19.9,
+//     "heatindex_f": 67.8,
+//     "dewpoint_c": 15.2,
+//     "dewpoint_f": 59.4,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 9.6,
+//     "gust_kph": 15.5,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679614200,
+//     "time": "2023-03-24 05:00",
+//     "temp_c": 19.6,
+//     "temp_f": 67.3,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 5.4,
+//     "wind_kph": 8.6,
+//     "wind_degree": 287,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1011.0,
+//     "pressure_in": 29.85,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 74,
+//     "cloud": 1,
+//     "feelslike_c": 19.6,
+//     "feelslike_f": 67.3,
+//     "windchill_c": 19.6,
+//     "windchill_f": 67.3,
+//     "heatindex_c": 19.6,
+//     "heatindex_f": 67.3,
+//     "dewpoint_c": 14.8,
+//     "dewpoint_f": 58.6,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 8.9,
+//     "gust_kph": 14.4,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679617800,
+//     "time": "2023-03-24 06:00",
+//     "temp_c": 19.3,
+//     "temp_f": 66.7,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 5.4,
+//     "wind_kph": 8.6,
+//     "wind_degree": 290,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.87,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 73,
+//     "cloud": 1,
+//     "feelslike_c": 19.3,
+//     "feelslike_f": 66.7,
+//     "windchill_c": 19.3,
+//     "windchill_f": 66.7,
+//     "heatindex_c": 19.3,
+//     "heatindex_f": 66.7,
+//     "dewpoint_c": 14.4,
+//     "dewpoint_f": 57.9,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 9.4,
+//     "gust_kph": 15.1,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679621400,
+//     "time": "2023-03-24 07:00",
+//     "temp_c": 20.4,
+//     "temp_f": 68.7,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 4.5,
+//     "wind_kph": 7.2,
+//     "wind_degree": 293,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1013.0,
+//     "pressure_in": 29.9,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 67,
+//     "cloud": 0,
+//     "feelslike_c": 20.4,
+//     "feelslike_f": 68.7,
+//     "windchill_c": 20.4,
+//     "windchill_f": 68.7,
+//     "heatindex_c": 20.4,
+//     "heatindex_f": 68.7,
+//     "dewpoint_c": 14.0,
+//     "dewpoint_f": 57.2,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.5,
+//     "gust_kph": 10.4,
+//     "uv": 6.0
+//     },
+//     {
+//     "time_epoch": 1679625000,
+//     "time": "2023-03-24 08:00",
+//     "temp_c": 22.8,
+//     "temp_f": 73.0,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 4.7,
+//     "wind_kph": 7.6,
+//     "wind_degree": 312,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1013.0,
+//     "pressure_in": 29.92,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 52,
+//     "cloud": 0,
+//     "feelslike_c": 24.7,
+//     "feelslike_f": 76.5,
+//     "windchill_c": 22.8,
+//     "windchill_f": 73.0,
+//     "heatindex_c": 24.7,
+//     "heatindex_f": 76.5,
+//     "dewpoint_c": 12.3,
+//     "dewpoint_f": 54.1,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 5.4,
+//     "gust_kph": 8.6,
+//     "uv": 6.0
+//     },
+//     {
+//     "time_epoch": 1679628600,
+//     "time": "2023-03-24 09:00",
+//     "temp_c": 25.2,
+//     "temp_f": 77.4,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 4.5,
+//     "wind_kph": 7.2,
+//     "wind_degree": 322,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1014.0,
+//     "pressure_in": 29.93,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 39,
+//     "cloud": 0,
+//     "feelslike_c": 25.4,
+//     "feelslike_f": 77.7,
+//     "windchill_c": 25.2,
+//     "windchill_f": 77.4,
+//     "heatindex_c": 25.4,
+//     "heatindex_f": 77.7,
+//     "dewpoint_c": 10.4,
+//     "dewpoint_f": 50.7,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 5.1,
+//     "gust_kph": 8.3,
+//     "uv": 7.0
+//     },
+//     {
+//     "time_epoch": 1679632200,
+//     "time": "2023-03-24 10:00",
+//     "temp_c": 27.6,
+//     "temp_f": 81.7,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 6.0,
+//     "wind_kph": 9.7,
+//     "wind_degree": 329,
+//     "wind_dir": "NNW",
+//     "pressure_mb": 1013.0,
+//     "pressure_in": 29.92,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 30,
+//     "cloud": 0,
+//     "feelslike_c": 26.6,
+//     "feelslike_f": 79.9,
+//     "windchill_c": 27.6,
+//     "windchill_f": 81.7,
+//     "heatindex_c": 26.6,
+//     "heatindex_f": 79.9,
+//     "dewpoint_c": 8.7,
+//     "dewpoint_f": 47.7,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.9,
+//     "gust_kph": 11.2,
+//     "uv": 7.0
+//     },
+//     {
+//     "time_epoch": 1679635800,
+//     "time": "2023-03-24 11:00",
+//     "temp_c": 32.3,
+//     "temp_f": 90.1,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 6.0,
+//     "wind_kph": 9.7,
+//     "wind_degree": 332,
+//     "wind_dir": "NNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.89,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 25,
+//     "cloud": 3,
+//     "feelslike_c": 30.8,
+//     "feelslike_f": 87.4,
+//     "windchill_c": 32.3,
+//     "windchill_f": 90.1,
+//     "heatindex_c": 30.8,
+//     "heatindex_f": 87.4,
+//     "dewpoint_c": 9.9,
+//     "dewpoint_f": 49.8,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.9,
+//     "gust_kph": 11.2,
+//     "uv": 8.0
+//     },
+//     {
+//     "time_epoch": 1679639400,
+//     "time": "2023-03-24 12:00",
+//     "temp_c": 33.7,
+//     "temp_f": 92.7,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 6.0,
+//     "wind_kph": 9.7,
+//     "wind_degree": 329,
+//     "wind_dir": "NNW",
+//     "pressure_mb": 1011.0,
+//     "pressure_in": 29.85,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 22,
+//     "cloud": 2,
+//     "feelslike_c": 32.0,
+//     "feelslike_f": 89.6,
+//     "windchill_c": 33.7,
+//     "windchill_f": 92.7,
+//     "heatindex_c": 32.0,
+//     "heatindex_f": 89.6,
+//     "dewpoint_c": 9.0,
+//     "dewpoint_f": 48.2,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.9,
+//     "gust_kph": 11.2,
+//     "uv": 8.0
+//     },
+//     {
+//     "time_epoch": 1679643000,
+//     "time": "2023-03-24 13:00",
+//     "temp_c": 34.8,
+//     "temp_f": 94.6,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 6.0,
+//     "wind_kph": 9.7,
+//     "wind_degree": 327,
+//     "wind_dir": "NNW",
+//     "pressure_mb": 1009.0,
+//     "pressure_in": 29.81,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 19,
+//     "cloud": 4,
+//     "feelslike_c": 32.9,
+//     "feelslike_f": 91.2,
+//     "windchill_c": 34.8,
+//     "windchill_f": 94.6,
+//     "heatindex_c": 32.9,
+//     "heatindex_f": 91.2,
+//     "dewpoint_c": 8.2,
+//     "dewpoint_f": 46.8,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 6.9,
+//     "gust_kph": 11.2,
+//     "uv": 8.0
+//     },
+//     {
+//     "time_epoch": 1679646600,
+//     "time": "2023-03-24 14:00",
+//     "temp_c": 35.6,
+//     "temp_f": 96.1,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 7.4,
+//     "wind_kph": 11.9,
+//     "wind_degree": 325,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1008.0,
+//     "pressure_in": 29.77,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 18,
+//     "cloud": 5,
+//     "feelslike_c": 33.9,
+//     "feelslike_f": 93.0,
+//     "windchill_c": 35.6,
+//     "windchill_f": 96.1,
+//     "heatindex_c": 33.9,
+//     "heatindex_f": 93.0,
+//     "dewpoint_c": 7.4,
+//     "dewpoint_f": 45.3,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 8.5,
+//     "gust_kph": 13.7,
+//     "uv": 9.0
+//     },
+//     {
+//     "time_epoch": 1679650200,
+//     "time": "2023-03-24 15:00",
+//     "temp_c": 35.3,
+//     "temp_f": 95.5,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 9.2,
+//     "wind_kph": 14.8,
+//     "wind_degree": 325,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1007.0,
+//     "pressure_in": 29.75,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 17,
+//     "cloud": 5,
+//     "feelslike_c": 33.5,
+//     "feelslike_f": 92.3,
+//     "windchill_c": 35.3,
+//     "windchill_f": 95.5,
+//     "heatindex_c": 33.5,
+//     "heatindex_f": 92.3,
+//     "dewpoint_c": 6.9,
+//     "dewpoint_f": 44.4,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 10.5,
+//     "gust_kph": 16.9,
+//     "uv": 9.0
+//     },
+//     {
+//     "time_epoch": 1679653800,
+//     "time": "2023-03-24 16:00",
+//     "temp_c": 34.0,
+//     "temp_f": 93.2,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 11.0,
+//     "wind_kph": 17.6,
+//     "wind_degree": 324,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1007.0,
+//     "pressure_in": 29.74,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 18,
+//     "cloud": 6,
+//     "feelslike_c": 32.0,
+//     "feelslike_f": 89.6,
+//     "windchill_c": 34.0,
+//     "windchill_f": 93.2,
+//     "heatindex_c": 32.0,
+//     "heatindex_f": 89.6,
+//     "dewpoint_c": 6.5,
+//     "dewpoint_f": 43.7,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 12.5,
+//     "gust_kph": 20.2,
+//     "uv": 8.0
+//     },
+//     {
+//     "time_epoch": 1679657400,
+//     "time": "2023-03-24 17:00",
+//     "temp_c": 32.2,
+//     "temp_f": 90.0,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 13.6,
+//     "wind_kph": 22.0,
+//     "wind_degree": 320,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1007.0,
+//     "pressure_in": 29.75,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 21,
+//     "cloud": 6,
+//     "feelslike_c": 30.1,
+//     "feelslike_f": 86.2,
+//     "windchill_c": 32.2,
+//     "windchill_f": 90.0,
+//     "heatindex_c": 30.1,
+//     "heatindex_f": 86.2,
+//     "dewpoint_c": 7.1,
+//     "dewpoint_f": 44.8,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 15.7,
+//     "gust_kph": 25.2,
+//     "uv": 8.0
+//     },
+//     {
+//     "time_epoch": 1679661000,
+//     "time": "2023-03-24 18:00",
+//     "temp_c": 28.7,
+//     "temp_f": 83.7,
+//     "is_day": 1,
+//     "condition": {
+//     "text": "Sunny",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 15.9,
+//     "wind_kph": 25.6,
+//     "wind_degree": 310,
+//     "wind_dir": "NW",
+//     "pressure_mb": 1008.0,
+//     "pressure_in": 29.78,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 34,
+//     "cloud": 6,
+//     "feelslike_c": 28.0,
+//     "feelslike_f": 82.4,
+//     "windchill_c": 28.7,
+//     "windchill_f": 83.7,
+//     "heatindex_c": 28.0,
+//     "heatindex_f": 82.4,
+//     "dewpoint_c": 11.4,
+//     "dewpoint_f": 52.5,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 18.8,
+//     "gust_kph": 30.2,
+//     "uv": 7.0
+//     },
+//     {
+//     "time_epoch": 1679664600,
+//     "time": "2023-03-24 19:00",
+//     "temp_c": 26.1,
+//     "temp_f": 79.0,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 13.9,
+//     "wind_kph": 22.3,
+//     "wind_degree": 300,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1010.0,
+//     "pressure_in": 29.82,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 47,
+//     "cloud": 5,
+//     "feelslike_c": 26.5,
+//     "feelslike_f": 79.7,
+//     "windchill_c": 26.1,
+//     "windchill_f": 79.0,
+//     "heatindex_c": 26.5,
+//     "heatindex_f": 79.7,
+//     "dewpoint_c": 13.8,
+//     "dewpoint_f": 56.8,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 17.2,
+//     "gust_kph": 27.7,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679668200,
+//     "time": "2023-03-24 20:00",
+//     "temp_c": 24.9,
+//     "temp_f": 76.8,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 12.1,
+//     "wind_kph": 19.4,
+//     "wind_degree": 292,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1011.0,
+//     "pressure_in": 29.85,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 50,
+//     "cloud": 4,
+//     "feelslike_c": 25.8,
+//     "feelslike_f": 78.4,
+//     "windchill_c": 24.9,
+//     "windchill_f": 76.8,
+//     "heatindex_c": 25.8,
+//     "heatindex_f": 78.4,
+//     "dewpoint_c": 13.9,
+//     "dewpoint_f": 57.0,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 15.2,
+//     "gust_kph": 24.5,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679671800,
+//     "time": "2023-03-24 21:00",
+//     "temp_c": 24.4,
+//     "temp_f": 75.9,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 8.7,
+//     "wind_kph": 14.0,
+//     "wind_degree": 281,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.88,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 52,
+//     "cloud": 4,
+//     "feelslike_c": 25.5,
+//     "feelslike_f": 77.9,
+//     "windchill_c": 24.4,
+//     "windchill_f": 75.9,
+//     "heatindex_c": 25.5,
+//     "heatindex_f": 77.9,
+//     "dewpoint_c": 14.0,
+//     "dewpoint_f": 57.2,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 11.2,
+//     "gust_kph": 18.0,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679675400,
+//     "time": "2023-03-24 22:00",
+//     "temp_c": 23.8,
+//     "temp_f": 74.8,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 7.6,
+//     "wind_kph": 12.2,
+//     "wind_degree": 284,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.89,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 56,
+//     "cloud": 5,
+//     "feelslike_c": 25.2,
+//     "feelslike_f": 77.4,
+//     "windchill_c": 23.8,
+//     "windchill_f": 74.8,
+//     "heatindex_c": 25.2,
+//     "heatindex_f": 77.4,
+//     "dewpoint_c": 14.4,
+//     "dewpoint_f": 57.9,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 9.8,
+//     "gust_kph": 15.8,
+//     "uv": 1.0
+//     },
+//     {
+//     "time_epoch": 1679679000,
+//     "time": "2023-03-24 23:00",
+//     "temp_c": 23.2,
+//     "temp_f": 73.8,
+//     "is_day": 0,
+//     "condition": {
+//     "text": "Clear",
+//     "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+//     "code": 1000
+//     },
+//     "wind_mph": 6.7,
+//     "wind_kph": 10.8,
+//     "wind_degree": 286,
+//     "wind_dir": "WNW",
+//     "pressure_mb": 1012.0,
+//     "pressure_in": 29.89,
+//     "precip_mm": 0.0,
+//     "precip_in": 0.0,
+//     "humidity": 59,
+//     "cloud": 6,
+//     "feelslike_c": 25.0,
+//     "feelslike_f": 77.0,
+//     "windchill_c": 23.2,
+//     "windchill_f": 73.8,
+//     "heatindex_c": 25.0,
+//     "heatindex_f": 77.0,
+//     "dewpoint_c": 14.6,
+//     "dewpoint_f": 58.3,
+//     "will_it_rain": 0,
+//     "chance_of_rain": 0,
+//     "will_it_snow": 0,
+//     "chance_of_snow": 0,
+//     "vis_km": 10.0,
+//     "vis_miles": 6.0,
+//     "gust_mph": 8.9,
+//     "gust_kph": 14.4,
+//     "uv": 1.0
+//     }
+//     ]
+//     }
+//     ]
+//     }
+//     }
+ 
+        setInterval(() => {
+          if(success){
+        datel.setUTCSeconds(datel.getUTCSeconds() +1);                 
+        Hours =datel.getHours();
+                Second =datel.getSeconds();
+                Mintues =datel.getMinutes()+1;
+                {String_time = Hours+":"+Mintues+":"+Second; }
+                 Dis_time.forEach(element => {element.innerHTML= String_time;});
+
+            }
+           }, 1000);
+</script> 
+<script>
+   let data2 
+   inputcity = document.querySelector('.search-input');
+
+    suggestioncon = document.querySelector('.input-suggestions ')
+ 
+   inputcity.addEventListener('keyup', ()=>{
+     getinfo2();
+   
+ 
+});
+
+ 
+getinfo2 = async( )=>{
+    event.preventDefault();
+    Cityname = inputcity.value;
+    if (Cityname === "") { 
+      
+    }
+    else {
+        try {
+         let url = `https://api.locationiq.com/v1/autocomplete?key=pk.410514d27ef6abd34b7fb1b27e6ab0bf&q=${Cityname}`;
+            let response = await fetch(url);
+             data2 = await response.json(); 
+             fill_data2();
+             
+           }
+        catch{
+          console.log("error fetching city name");
+        }
+        }
+        }
+
+
+        fill_data2 = ()=>{
+          suggestioncon.innerHTML= ""
+             for (let i = 0; i < data2.length ; i++) {
+                   node = document.createElement("div");
+                  node.classList.add("suggestion");
+                  node.onclick = ()=>{Cityname = data2[i].display_name; forwards = true; getinfo(); }
+                  textnode = document.createTextNode(data2[i].display_name);
+                  node.appendChild(textnode);
+                  suggestioncon.appendChild(node)
+             
+        }
+        }
+
+        // for testing purposes
+        success = true;
+        fill_data();
+
+
+        ///
+        
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+ .landding_bg{
+justify-content: space-around; 
+display: flex;
+width: 100vw;
+height: 100vh;
+align-items: center;
+position: absolute;
+top: 0;
+z-index: -1;
+overflow: hidden;
+}
+.loader{
+position: relative;
+width: 16vw;
+height: 16vw;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+/* .loader:nth-child(1){left: 15vw;}
+.loader:nth-child(2){
+left: 62vw;
+transform: rotate(180deg);
+} */
+.loader span{
+  position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ transform: rotate(calc(36deg * var(--i)));
+ z-index: -1;
+}
+.loader:nth-child(2) span::before{
+color: #670cf8 !important;
+}
+.loader span::before{
+content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.3vw;
+    height: 1.3vw;
+    border-radius: 50%;
+    background:transparent;
+    color: #00efff;
+    border: 0.2vw solid currentColor;
+    box-sizing: border-box;
+    box-shadow:  0 0 1.04vw currentColor,
+                        -1.5625vw -1.5625vw 0 currentColor,
+                        -1.5625vw -1.5625vw 1.04vw currentColor,
+                         1.5625vw  1.5625vw 0 currentColor,
+                         1.5625vw  1.5625vw 1.04vw currentColor,
+                         1.5625vw  -1.5625vw 0 currentColor,
+                         1.5625vw  -1.5625vw 1.04vw currentColor,
+                        -1.5625vw  1.5625vw 0 currentColor,
+                         -1.5625vw  1.5625vw 1.04vw currentColor;
+animation: animatation_hueRotate 8s infinite linear ;
+transform-origin: 1.04w;
+transition: 2200ms;
+animation-delay: calc(-0.25s *  var(--i));
+} 
+body.HoverCircle  span::before{
+    transform-origin: 12.5vw;
+    width: 1.46vw;
+    height: 1.46vw;
+    box-shadow: -10.416vw -10.416vw 0 currentColor,
+                    -10.416vw -10.416vw 1.04vw currentColor,
+                    10.416vw  10.416vw 0 currentColor,
+                    10.416vw  10.416vw 1.04vw currentColor ,
+                    10.416vw  -10.416vw 0 currentColor,
+                    10.416vw  -10.416vw 1.04vw currentColor,
+                    -10.416vw  10.416vw 0 currentColor,
+                    -10.416vw  10.416vw 1.04vw currentColor;
+}
+body.HoverCircle .contanier_1{
+opacity: 0.65;
+filter: brightness(0.45);    
+}
+@media only screen and (max-width: 990px) {
+    .loader{
+      transform: scale(1.4) !important;
+    }
+    }
+@media only screen and (max-width: 768px) {
+  .landding_bg{
+    flex-direction: column;
+    
+  }
+      .loader{
+        transform: scale(2.8) !important;
+      }
+      }

@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width , initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="author" content="Yadnyesh sunil  borole">
+  <meta name="description" content="Hello i am a Web Developer and  I am in 10th">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet" />
+  <meta name="keywords" content="Yadnyesh sunil borole"> 
+  <title>YSBlogs-Periodic table</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton&display=swap">
+  <link rel="stylesheet" type="text/css" href="css/allAnimation.css">
+  <link rel="stylesheet" type="text/css" href="css/AllFonts.css">
+  <script src="js/jquery.js"></script> 
+  <script src="js/jquery.dataTables.min.js"></script> 
+<link href="css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="css/periodictable.css" rel="stylesheet">
+  <script>
+$(document).ready(function (){
+  $('#myTable thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#myTable thead'); 
+    let table = $('#myTable').DataTable({
+        pageLength: 118 , 
+        "aoColumnDefs": [ 
+         { "bSearchable": false, "aTargets": [ 7] }
+       ],
+       orderCellsTop: true,
+        fixedHeader: true,
+        initComplete: function () {
+            var api = this.api();
+ 
+            // For each column
+            api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                    // Set the header cell to contain the input element
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="' + title + '" />');
+ 
+                    // On every keypress in this input
+                    $(
+                        'input',
+                        $('.filters th').eq($(api.column(colIdx).header()).index())
+                    )
+                        .off('keyup change')
+                        .on('keyup change', function (e) {
+                            e.stopPropagation();
+ 
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+ 
+                            var cursorPosition = this.selectionStart;
+                            // Search the column for that value
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+ 
+                            $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                });
+        }, 
+    });
+    $('#search').keyup(function(){
+          table.search($(this).val()).draw();
+        }) 
+});   </script>
+ 
+</head>
+
+ 
+<body id="body">
+  <noscript>You need to enable JavaScript to run this app.</noscript> 
+    <audio id="click_sound" src="sounds/click_sound.mp3"></audio>
+    <audio id="btnClick" src="sounds/Btnclick.mp3"></audio>
+
+    <!-- <div id="jsScroll" class="scroll" onclick="scrollToTop();">
+      <i class="fa fa-angle-up"></i>
+    </div> -->
+    
+    <div class="onclickbackgorund" id="onclickbackgroundID"> 
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span> 
+     </div>
+   <!-- extra bacgr ound elements -->
+   <div id="particles-js"     ></div> 
+   <div id="background-container">
+     <!-- <div class="sunMain" > -->
+      <div class="sunmain"> 
+        <div class="sunwrap">
+          <div class="sunbackground"></div>
+          <div class="sunclouds"></div>   
+        </div>
+        <div class="Sunmask"></div> 
+      </div>
+      <div class="planetaMian">
+        <div class="planet"> 
+         <div class="wrap">
+           <div class="background"></div>
+           <div class="clouds"></div>   
+          </div>
+          <div class="mask"></div>
+        </div>
+      </div>
+      <div id="earth-img"></div>
+      <div class="stars"></div>
+      <div class="twinkling"></div>
+    <div class="clouds"></div> </div >
+    
+    <!-- <div class="DetaliTableElements-open"></div>   -->
+    <header  id="header">
+      <div class="logo">YS-WEBSITE</div>
+      <input type="text"  autocomplete="off" id="search" placeholder="search elements" onclick="addsearch();">  
+       <div class="suggestionsMainCLASS">
+          <!-- <table class="table  sortable "> -->
+            <table id="myTable"  class="  table table-responsive">
+              <thead>
+              <tr>
+                <th id="table-AtomicNo">Z</th>
+                <th id="table-Symbol">Symbol</th>
+                <th id="table-AtomicMass">U</th>
+                <th id="table-ElementName">Element Name</th>
+                <th id="table-Familes">Familes</th>
+                <th id="table-Gruop">Gruop</th>
+                <th id="table-Period">Period</th>
+                <th id="table-ForMore">For More</th>
+                  </tr> 
+              </thead> 
+              <tbody class='tablebody'>  
+  <tr> <td>1</td> <td>H</td> <td>1.01</td> <td>Hydrogen</td> <td>Cannot Say</td> <td>1</td> <td>1</td> <td class="btnTable" onclick="onclickONBtntable(1);">click</td> </tr><tr> <td>2</td> <td>He</td> <td>4</td> <td>Helium</td> <td>Noble Gases </td> <td>18</td> <td>1</td> <td class="btnTable" onclick="onclickONBtntable(2);">click</td> </tr><tr> <td>3</td> <td>Li</td> <td>6.94</td> <td>Lithium</td> <td>Alkali Metal</td> <td>1</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(3);">click</td> </tr><tr> <td>4</td> <td>Be</td> <td>9.01</td> <td>Beryllium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(4);">click</td> </tr><tr> <td>5</td> <td>B</td> <td>10.81</td> <td>Boron</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(5);">click</td> </tr><tr> <td>6</td> <td>C</td> <td>12.01</td> <td>Carbon</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(6);">click</td> </tr><tr> <td>7</td> <td>N</td> <td>14.01</td> <td>Nitrogen</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(7);">click</td> </tr><tr> <td>8</td> <td>O</td> <td>16</td> <td>Oxygen</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(8);">click</td> </tr><tr> <td>9</td> <td>F</td> <td>19</td> <td>Fluorine</td> <td>Halogens </td> <td>17</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(9);">click</td> </tr><tr> <td>10</td> <td>Ne</td> <td>20.18</td> <td>Neon</td> <td>Noble Gases </td> <td>18</td> <td>2</td> <td class="btnTable" onclick="onclickONBtntable(10);">click</td> </tr><tr> <td>11</td> <td>Na</td> <td>22.99</td> <td>Sodium</td> <td>Alkali Metal</td> <td>1</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(11);">click</td> </tr><tr> <td>12</td> <td>Mg</td> <td>24.3</td> <td>Magnesium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(12);">click</td> </tr><tr> <td>13</td> <td>Al</td> <td>26.98</td> <td>Aluminium</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(13);">click</td> </tr><tr> <td>14</td> <td>Si</td> <td>28.09</td> <td>Silicon</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(14);">click</td> </tr><tr> <td>15</td> <td>P</td> <td>30.97</td> <td>Phosphorus</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(15);">click</td> </tr><tr> <td>16</td> <td>S</td> <td>32.06</td> <td>Sulfur</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(16);">click</td> </tr><tr> <td>17</td> <td>Cl</td> <td>35.45</td> <td>Chlorine</td> <td>Halogens </td> <td>17</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(17);">click</td> </tr><tr> <td>18</td> <td>Ar</td> <td>39.95</td> <td>Argon</td> <td>Noble Gases </td> <td>18</td> <td>3</td> <td class="btnTable" onclick="onclickONBtntable(18);">click</td> </tr><tr> <td>19</td> <td>K</td> <td>39.1</td> <td>Potassium</td> <td>Alkali Metal</td> <td>1</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(19);">click</td> </tr><tr> <td>20</td> <td>Ca</td> <td>40.08</td> <td>Calcium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(20);">click</td> </tr><tr> <td>21</td> <td>Sc</td> <td>44.96</td> <td>Scandium</td> <td>Transition Metals: Groups</td> <td>3</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(21);">click</td> </tr><tr> <td>22</td> <td>Ti</td> <td>47.87</td> <td>Titanium</td> <td>Transition Metals: Groups</td> <td>4</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(22);">click</td> </tr><tr> <td>23</td> <td>V</td> <td>50.94</td> <td>Vanadium</td> <td>Transition Metals: Groups</td> <td>5</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(23);">click</td> </tr><tr> <td>24</td> <td>Cr</td> <td>52</td> <td>Chromium</td> <td>Transition Metals: Groups</td> <td>6</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(24);">click</td> </tr><tr> <td>25</td> <td>Mn</td> <td>54.94</td> <td>Manganese</td> <td>Transition Metals: Groups</td> <td>7</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(25);">click</td> </tr><tr> <td>26</td> <td>Fe</td> <td>55.85</td> <td>Iron</td> <td>Transition Metals: Groups</td> <td>8</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(26);">click</td> </tr><tr> <td>27</td> <td>Co</td> <td>58.93</td> <td>Cobalt</td> <td>Transition Metals: Groups</td> <td>9</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(27);">click</td> </tr><tr> <td>28</td> <td>Ni</td> <td>58.69</td> <td>Nickel</td> <td>Transition Metals: Groups</td> <td>10</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(28);">click</td> </tr><tr> <td>29</td> <td>Cu</td> <td>63.55</td> <td>Copper</td> <td>Transition Metals: Groups</td> <td>11</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(29);">click</td> </tr><tr> <td>30</td> <td>Zn</td> <td>65.38</td> <td>Zinc</td> <td>Transition Metals: Groups</td> <td>12</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(30);">click</td> </tr><tr> <td>31</td> <td>Ga</td> <td>69.72</td> <td>Gallium</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(31);">click</td> </tr><tr> <td>32</td> <td>Ge</td> <td>72.63</td> <td>Germanium</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(32);">click</td> </tr><tr> <td>33</td> <td>As</td> <td>74.92</td> <td>Arsenic</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(33);">click</td> </tr><tr> <td>34</td> <td>Se</td> <td>78.97</td> <td>Selenium</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(34);">click</td> </tr><tr> <td>35</td> <td>Br</td> <td>79.9</td> <td>Bromine</td> <td>Halogens </td> <td>17</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(35);">click</td> </tr><tr> <td>36</td> <td>Kr</td> <td>83.8</td> <td>Krypton</td> <td>Noble Gases </td> <td>18</td> <td>4</td> <td class="btnTable" onclick="onclickONBtntable(36);">click</td> </tr><tr> <td>37</td> <td>Rb</td> <td>85.47</td> <td>Rubidium</td> <td>Alkali Metal</td> <td>1</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(37);">click</td> </tr><tr> <td>38</td> <td>Sr</td> <td>87.62</td> <td>Strontium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(38);">click</td> </tr><tr> <td>39</td> <td>Y</td> <td>88.91</td> <td>Yttrium</td> <td>Transition Metals: Groups</td> <td>3</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(39);">click</td> </tr><tr> <td>40</td> <td>Zr</td> <td>91.22</td> <td>Zirconium</td> <td>Transition Metals: Groups</td> <td>4</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(40);">click</td> </tr><tr> <td>41</td> <td>Nb</td> <td>92.91</td> <td>Niobium</td> <td>Transition Metals: Groups</td> <td>5</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(41);">click</td> </tr><tr> <td>42</td> <td>Mo</td> <td>95.95</td> <td>Molybdenum</td> <td>Transition Metals: Groups</td> <td>6</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(42);">click</td> </tr><tr> <td>43</td> <td>Tc</td> <td>98</td> <td>Technetium</td> <td>Transition Metals: Groups</td> <td>7</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(43);">click</td> </tr><tr> <td>44</td> <td>Ru</td> <td>101.07</td> <td>Ruthenium</td> <td>Transition Metals: Groups</td> <td>8</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(44);">click</td> </tr><tr> <td>45</td> <td>Rh</td> <td>102.91</td> <td>Rhodium</td> <td>Transition Metals: Groups</td> <td>9</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(45);">click</td> </tr><tr> <td>46</td> <td>Pd</td> <td>106.42</td> <td>Palladium</td> <td>Transition Metals: Groups</td> <td>10</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(46);">click</td> </tr><tr> <td>47</td> <td>Ag</td> <td>107.87</td> <td>Silver</td> <td>Transition Metals: Groups</td> <td>11</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(47);">click</td> </tr><tr> <td>48</td> <td>Cd</td> <td>112.41</td> <td>Cadmium</td> <td>Transition Metals: Groups</td> <td>12</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(48);">click</td> </tr><tr> <td>49</td> <td>In</td> <td>114.82</td> <td>Indium</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(49);">click</td> </tr><tr> <td>50</td> <td>Sn</td> <td>118.71</td> <td>Tin</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(50);">click</td> </tr><tr> <td>51</td> <td>Sb</td> <td>121.76</td> <td>Antimony</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(51);">click</td> </tr><tr> <td>52</td> <td>Te</td> <td>127.6</td> <td>Tellurium</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(52);">click</td> </tr><tr> <td>53</td> <td>I</td> <td>126.9</td> <td>Iodine</td> <td>Halogens </td> <td>17</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(53);">click</td> </tr><tr> <td>54</td> <td>Xe</td> <td>131.29</td> <td>Xenon</td> <td>Noble Gases </td> <td>18</td> <td>5</td> <td class="btnTable" onclick="onclickONBtntable(54);">click</td> </tr><tr> <td>55</td> <td>Cs</td> <td>132.91</td> <td>Cesium</td> <td>Alkali Metal</td> <td>1</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(55);">click</td> </tr><tr> <td>56</td> <td>Ba</td> <td>137.33</td> <td>Barium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(56);">click</td> </tr><tr> <td>57</td> <td>La</td> <td>138.91</td> <td>Lanthanum</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(57);">click</td> </tr><tr> <td>58</td> <td>Ce</td> <td>140.12</td> <td>Cerium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(58);">click</td> </tr><tr> <td>59</td> <td>Pr</td> <td>140.91</td> <td>Praseodymium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(59);">click</td> </tr><tr> <td>60</td> <td>Nd</td> <td>144.24</td> <td>Neodymium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(60);">click</td> </tr><tr> <td>61</td> <td>Pm</td> <td>145</td> <td>Promethium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(61);">click</td> </tr><tr> <td>62</td> <td>Sm</td> <td>150.36</td> <td>Samarium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(62);">click</td> </tr><tr> <td>63</td> <td>Eu</td> <td>151.96</td> <td>Europium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(63);">click</td> </tr><tr> <td>64</td> <td>Gd</td> <td>157.25</td> <td>Gadolinium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(64);">click</td> </tr><tr> <td>65</td> <td>Tb</td> <td>158.93</td> <td>Terbium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(65);">click</td> </tr><tr> <td>66</td> <td>Dy</td> <td>162.5</td> <td>Dysprosium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(66);">click</td> </tr><tr> <td>67</td> <td>Ho</td> <td>164.93</td> <td>Holmium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(67);">click</td> </tr><tr> <td>68</td> <td>Er</td> <td>167.26</td> <td>Erbium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(68);">click</td> </tr><tr> <td>69</td> <td>Tm</td> <td>168.93</td> <td>Thulium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(69);">click</td> </tr><tr> <td>70</td> <td>Yb</td> <td>173.05</td> <td>Ytterbium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(70);">click</td> </tr><tr> <td>71</td> <td>Lu</td> <td>174.97</td> <td>Lutetium</td> <td>Rare earth element </td> <td>101</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(71);">click</td> </tr><tr> <td>72</td> <td>Hf</td> <td>178.49</td> <td>Hafnium</td> <td>Transition Metals: Groups</td> <td>4</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(72);">click</td> </tr><tr> <td>73</td> <td>Ta</td> <td>180.95</td> <td>Tantalum</td> <td>Transition Metals: Groups</td> <td>5</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(73);">click</td> </tr><tr> <td>74</td> <td>W</td> <td>183.84</td> <td>Tungsten</td> <td>Transition Metals: Groups</td> <td>6</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(74);">click</td> </tr><tr> <td>75</td> <td>Re</td> <td>186.21</td> <td>Rhenium</td> <td>Transition Metals: Groups</td> <td>7</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(75);">click</td> </tr><tr> <td>76</td> <td>Os</td> <td>190.23</td> <td>Osmium</td> <td>Transition Metals: Groups</td> <td>8</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(76);">click</td> </tr><tr> <td>77</td> <td>Ir</td> <td>192.22</td> <td>Iridium</td> <td>Transition Metals: Groups</td> <td>9</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(77);">click</td> </tr><tr> <td>78</td> <td>Pt</td> <td>195.08</td> <td>Platinum</td> <td>Transition Metals: Groups</td> <td>10</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(78);">click</td> </tr><tr> <td>79</td> <td>Au</td> <td>196.97</td> <td>Gold</td> <td>Transition Metals: Groups</td> <td>11</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(79);">click</td> </tr><tr> <td>80</td> <td>Hg</td> <td>200.59</td> <td>Mercury</td> <td>Transition Metals: Groups</td> <td>12</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(80);">click</td> </tr><tr> <td>81</td> <td>Tl</td> <td>204.38</td> <td>Thallium</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(81);">click</td> </tr><tr> <td>82</td> <td>Pb</td> <td>207.21</td> <td>Lead</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(82);">click</td> </tr><tr> <td>83</td> <td>Bi</td> <td>208.98</td> <td>Bismuth</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(83);">click</td> </tr><tr> <td>84</td> <td>Po</td> <td>209</td> <td>Polonium</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(84);">click</td> </tr><tr> <td>85</td> <td>At</td> <td>210</td> <td>Astatine</td> <td>Halogens </td> <td>17</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(85);">click</td> </tr><tr> <td>86</td> <td>Rn</td> <td>222</td> <td>Radon</td> <td>Noble Gases </td> <td>18</td> <td>6</td> <td class="btnTable" onclick="onclickONBtntable(86);">click</td> </tr><tr> <td>87</td> <td>Fr</td> <td>223</td> <td>Francium</td> <td>Alkali Metal</td> <td>1</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(87);">click</td> </tr><tr> <td>88</td> <td>Ra</td> <td>226</td> <td>Radium</td> <td>Alkaline Earth Metals</td> <td>2</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(88);">click</td> </tr><tr> <td>89</td> <td>Ac</td> <td>227</td> <td>Actinium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(89);">click</td> </tr><tr> <td>90</td> <td>Th</td> <td>232.04</td> <td>Thorium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(90);">click</td> </tr><tr> <td>91</td> <td>Pa</td> <td>231.04</td> <td>Protactinium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(91);">click</td> </tr><tr> <td>92</td> <td>U</td> <td>238.03</td> <td>Uranium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(92);">click</td> </tr><tr> <td>93</td> <td>Np</td> <td>237</td> <td>Neptunium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(93);">click</td> </tr><tr> <td>94</td> <td>Pu</td> <td>244</td> <td>Plutonium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(94);">click</td> </tr><tr> <td>95</td> <td>Am</td> <td>243</td> <td>Americium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(95);">click</td> </tr><tr> <td>96</td> <td>Cm</td> <td>247</td> <td>Curium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(96);">click</td> </tr><tr> <td>97</td> <td>Bk</td> <td>247</td> <td>Berkelium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(97);">click</td> </tr><tr> <td>98</td> <td>Cf</td> <td>251</td> <td>Californium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(98);">click</td> </tr><tr> <td>99</td> <td>Es</td> <td>252</td> <td>Einsteinium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(99);">click</td> </tr><tr> <td>100</td> <td>Fm</td> <td>257</td> <td>Fermium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(100);">click</td> </tr><tr> <td>101</td> <td>Md</td> <td>258</td> <td>Mendelevium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(101);">click</td> </tr><tr> <td>102</td> <td>No</td> <td>259</td> <td>Nobelium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(102);">click</td> </tr><tr> <td>103</td> <td>Lr</td> <td>266</td> <td>Lawrencium</td> <td>Rare earth element </td> <td>102</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(103);">click</td> </tr><tr> <td>104</td> <td>Rf</td> <td>267</td> <td>Rutherfordium</td> <td>Transition Metals: Groups</td> <td>4</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(104);">click</td> </tr><tr> <td>105</td> <td>Db</td> <td>268</td> <td>Dubnium</td> <td>Transition Metals: Groups</td> <td>5</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(105);">click</td> </tr><tr> <td>106</td> <td>Sg</td> <td>269</td> <td>Seaborgium</td> <td>Transition Metals: Groups</td> <td>6</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(106);">click</td> </tr><tr> <td>107</td> <td>Bh</td> <td>270</td> <td>Bohrium</td> <td>Transition Metals: Groups</td> <td>7</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(107);">click</td> </tr><tr> <td>108</td> <td>Hs</td> <td>269</td> <td>Hassium</td> <td>Transition Metals: Groups</td> <td>8</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(108);">click</td> </tr><tr> <td>109</td> <td>Mt</td> <td>278</td> <td>Meitnerium</td> <td>Transition Metals: Groups</td> <td>9</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(109);">click</td> </tr><tr> <td>110</td> <td>Ds</td> <td>281</td> <td>Darmstadtium</td> <td>Transition Metals: Groups</td> <td>10</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(110);">click</td> </tr><tr> <td>111</td> <td>Rg</td> <td>282</td> <td>Roentgenium</td> <td>Transition Metals: Groups</td> <td>11</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(111);">click</td> </tr><tr> <td>112</td> <td>Cn</td> <td>285</td> <td>Copernicium</td> <td>Transition Metals: Groups</td> <td>12</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(112);">click</td> </tr><tr> <td>113</td> <td>Nh</td> <td>286</td> <td>Nihonium</td> <td>Boron Group or Earth Metals</td> <td>13</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(113);">click</td> </tr><tr> <td>114</td> <td>Fl</td> <td>289</td> <td>Flerovium</td> <td>Carbon Group or Tetrels</td> <td>14</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(114);">click</td> </tr><tr> <td>115</td> <td>Mc</td> <td>289</td> <td>Moscovium</td> <td>Nitrogen Group or Pnictogens</td> <td>15</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(115);">click</td> </tr><tr> <td>116</td> <td>Lv</td> <td>293</td> <td>Livermorium</td> <td>Oxygen Group or Chalcogens </td> <td>16</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(116);">click</td> </tr><tr> <td>117</td> <td>Ts</td> <td>294</td> <td>Tennessine</td> <td>Halogens </td> <td>17</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(117);">click</td> </tr><tr> <td>118</td> <td>Og</td> <td>294</td> <td>Oganesson</td> <td>Noble Gases </td> <td>18</td> <td>7</td> <td class="btnTable" onclick="onclickONBtntable(118);">click</td> </tr> 
+  </tbody>
+</table> 
+      </div>
+      <div class="btncontaniner btncontaniner_header_A">
+       <a class="header_A" href="/"><span>Home</span></a>
+       <a class="header_A" href="/contract.htm"><span>Contrat us</span></a>
+       <a class="header_A" href="#"><span>About us</span></a>
+       <a class="header_A" href="/"><span>Webpages</span></a>
+      </div>
+     </header> 
+     <div class="toggle" onclick="togglemenu();"></div>
+  <div id="cutoption">
+    <img class="cutoptionimgClass" id="cutoptionimg" src="css/bg/close.png" alt="" /><img  class="cutoptionimgClass"  id="cutoptionimg2" src="css/bg/close.png" alt="" />
+  </div>
+  
+  <div class="sidebar ">
+    <div class="BlankForSidebar1 BlankForSidebar  "></div>
+     <div class="btncontaniner sidebarcontanier">
+    <a  class="sidebarbtns  " id="directBTN_1" href="/"><span>Home</span></a>
+    <a  class="sidebarbtns  " id="directBTN_2" href="/contract.htm"><span>Contrat us</span></a>
+    <a  class="sidebarbtns  " id="directBTN_3" href="#"><span>About us</span></a>
+    <a  class="sidebarbtns  " id="directBTN_4" href="/"><span>Webpages</span></a>    
+     <a class="sidebarbtns  " id="directBTN_5" href="mathapp"><span>Android work</span></a>
+     <a class="sidebarbtns  " id="directBTN_6" href="/weatherapp.html"><span> WebApp  </span></a> 
+     <a class="sidebarbtns " href="#" id="Customization_selector"><span> customization Setting</span></a>
+    <a class="sidebarbtns  "  id="directBTN_7" href="pavbhajiblog"><span>Blog</span></a>
+    </div>
+  </div>
+   <div class="sidebar2">
+      <div class="BlankForSidebar2 BlankForSidebar"></div>
+    <div class="btncontaniner sidebarcontanier Customization-modes">
+      <div class="boxheading">
+        <div class="lightbar"></div>
+        <div class="toplayer"></div>
+        <p id="Customization">Customization modes</p>
+      </div>
+        <div class="submainbtncontanier">
+          <div class="  AllMainCustomize">
+            <div class="sunMainCustomizeFlex MainCustomizeFlex">
+              <p id="sunCustomize" class="submainheading">Sun</p>   
+               <div class="switch" id="switch1" >
+                 <div class="btn btn1" onclick="onClickonSwitch('btn1');">
+                </div>
+                <span class="circleONOFF"></span>
+                <p class="ON_OFF_METER"  id="ON_OFF_METER_1"></p>
+                     </div></div>
+            <div class="earthMainCustomizeFlex MainCustomizeFlex">
+              <p id="earthCustomize" class="submainheading">Earth</p>    
+              <div class="switch" id="switch2">
+                  <div class="btn btn2" onclick="onClickonSwitch('btn2');">
+                  </div>
+                  <span class="circleONOFF"></span>
+                  <p class="ON_OFF_METER" id="ON_OFF_METER_2"></p>
+          </div></div>
+<!--           temps
+          <div class="ParticleJSMainCustomizeFlex MainCustomizeFlex">
+            <p id="ParticleJSCustomize" class="submainheading"> Particle</p>    
+            <div class="switch" id="switch3">
+                <div class="btn btn2" onclick="onClickonSwitch('btn3');">
+                </div>
+                <span class="circleONOFF"></span>
+                <p class="ON_OFF_METER" id="ON_OFF_METER_3"></p>
+        </div></div> -->
+        <div class="Body_Drop-shadow_filter CustomizeFlex MainCustomizeFlex">
+          <p id="Body_Drop-shadow_filter_Customize" class="submainheading">Drop-shadow</p>    
+          <div class="switch" id="switch3">
+              <div class="btn btn2" onclick="onClickonSwitch('btn3');">
+              </div>
+              <span class="circleONOFF"></span>
+              <p class="ON_OFF_METER" id="ON_OFF_METER_3"></p>
+      </div></div> 
+          </div>  
+        </div>
+   </div>
+  </div> 
+
+    <!-- IF Moblie is not Roated -->
+        <div class="moblieISNotRoated">Please Rotate Your Moblie For Seeing PeriodicTable Or  You can click below button to rotate automatically  
+        </div><a class="orientatinalBTn" ><span>Click Here</span></a>
+        <div class="ForMoblieElements">  
+          <div class="Moblie_divTableHead">
+          <div class="Moblie_divTableTheadTR">
+            <div class="MoblieAtomicNumberTheads">Z</div>
+            <div class="MoblieSymbolTheads">Symbol</div>
+            <div class="MoblieAtomicmassTheads">U</div>
+            <div class="MoblieElementNameTheads">Element Name</div> 
+            <div class="MoblieGruopTheads">Gruop</div>
+            <div class="MoblieperiodTheads">Period</div> 
+          </div></div> 
+          
+          <div class="MoblieTableTBody">  
+            <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll other-nonmetal" id="moblie_elements-1"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-2"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-3"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-4"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-5"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-6"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-7"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-8"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-9"></div>
+<div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-10"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-11"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-12"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-13"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-14"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-15"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-16"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-17"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-18"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-19"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-20"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-21"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-22"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-23"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-24"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-25"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-26"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-27"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-28"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-29"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-30"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-31"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-32"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-33"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-34"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-35"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-36"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-37"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-38"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-39"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-40"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-41"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-42"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-43"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-44"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-45"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-46"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-47"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-48"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-49"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-50"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-51"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-52"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  other-nonmetal" id="moblie_elements-53"></div> 
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-54"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-55"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-56"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-57"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-58"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-59"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-60"></div> 
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-61"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-62"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-63"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-64"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-65"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-66"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-67"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-68"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-69"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements" id="moblie_elements-70"></div> 
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  lanthrathideseries_elements " id="moblie_elements-71"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-72"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-73"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-74"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-75"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-76"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-77"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-78"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-79"></div>
+  <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-80"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-81"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-82"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-83"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-84"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  metalloid" id="moblie_elements-85"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  noble-gasses" id="moblie_elements-86"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll alkali-metals" id="moblie_elements-87"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  akiline-earth-metals" id="moblie_elements-88"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-89"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-90"></div> 
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-91"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-92"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-93"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-94"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-95"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-96"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-97"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-98"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-99"></div>
+ <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-100"></div> 
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-101"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-102"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  anthrathideseires_elements" id="moblie_elements-103"></div> 
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-104"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-105"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-106"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-107"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-108"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-109"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-110"></div> 
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-111"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  transition-metal" id="moblie_elements-112"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-113"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  post-transition-metal" id="moblie_elements-114"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-115"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-116"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-117"></div>
+   <div onclick="clicksoundfun()" class = "MoblieDivTableParts  Moblie_elementsAll  unknown" id="moblie_elements-118"></div>
+ </div> </div>
+
+           <div id="periodictable">
+    <div id="seleectormetaldiv"> 
+    <div id="selectormetals">
+      <p class="paraforselctormetal  alkalimetalsselectorid  alkali-metals-selector" id="alkali-metals-selector-id"  >alkali metals</p> 
+      <p class="paraforselctormetal  akilineearthmetalselectorid  akiline-earth-metals-selector" id="akiline-earth-metals-selector-id">akiline earths metals </p>
+      <p class="paraforselctormetal  transitionmetalselectorid  transition-metal-selector" id="transition-metal-selector-id">transition-metal </p>
+      <p class="paraforselctormetal  lanthrathideseriesselectorid  lanthrathideseries-selector" id="lanthrathideseries-selector-id">lanthrathide</p>
+      <p class="paraforselctormetal  anthrathideseiresselectorid  anthrathideseires-selector" id="anthrathideseires-selector-id">anthrathide</p>
+      <p class="paraforselctormetal  posttransitionmetalselectorid  post-transition-metal-selector" id="post-transition-metal-selector-id">post-transition-metal </p>
+      <p class="paraforselctormetal  metalloidselectorid metalloid-selector" id="metalloid-selector-id">metalloid </p>
+      <p class="paraforselctormetal  othernonmetalselectorid  other-nonmetal-selector" id="other-nonmetal-selector-id">other-nonmetal </p>
+      <p class="paraforselctormetal  noblegassesselectorid  noble-gasses-selector" id="noble-gasses-selector-id">noble gasses</p>
+      <p class="paraforselctormetal  unknownselectorid  unknown-selector" id="unknown-selector-id">unknown</p>
+      
+    </div></div>
+    <div class="elements   " id="element">
+       <!-- alkali metals --> 
+       <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-3"></div>
+      <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-11"></div>
+      <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-19"></div>
+      <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-37"></div>
+      <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-55"></div>
+      <div onclick="clicksoundfun()" class="elementsAll alkali-metals left_Side_elements" id="elements-87"></div>
+
+      <!-- alkaline earths metals          -->
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-4"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-12"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-20"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-38"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-56"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , akiline-earth-metals" id="elements-88"></div>
+
+      <!--transition metals     -->
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-21"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-22"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-23"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-24"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-25"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-26"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-27"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-28"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-29"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-30"></div>
+ 
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-39"></div>
+
+      <!-- //elementsAllExtra -->
+      <div class="elementsAllExtra " id="below_elements_39__1" ><p class="elementsAllExtrasymbol">101</p><p class="elementsAllExtraName">Lanthanides </p></div>
+      <div class="elementsAllExtra " id="below_elements_39__2" ><p class="elementsAllExtrasymbol">102</p><p class="elementsAllExtraName">actinides  </p></div>
+
+
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-40"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-41"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-42"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-43"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-44"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-45"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-46"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-47"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-48"></div>
+
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-72"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-73"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-74"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-75"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-76"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-77"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-78"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-79"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-80"></div>
+
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-104"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-105"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-106"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-107"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-108"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , transition-metal" id="elements-112"></div>
+
+      <!-- post-transition-metal -->
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-13"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-31"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-49"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-50"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-81"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-82"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-83"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-84"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , post-transition-metal" id="elements-114"></div>
+
+      <!-- metalloid -->
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-5"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-14"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-32"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-33"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-51"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-52"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , metalloid" id="elements-85"></div>
+
+      <!-- other-nonmetal -->
+      <div onclick="clicksoundfun()" class="elementsAll other-nonmetal left_Side_elements" id="elements-1"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-6"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-7"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-8"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-9"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-15"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-16"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-17"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-34"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-35"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , other-nonmetal" id="elements-53"></div>
+
+      <!-- noble metals -->
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-2"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-10"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-18"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-36"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-54"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , noble-gasses right_Side_elements" id="elements-86"></div>
+
+      <!-- unknown -->
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-109"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-110"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-111"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-113"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-115"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-116"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown" id="elements-117"></div>
+      <div onclick="clicksoundfun()" class="elementsAll , unknown right_Side_elements" id="elements-118"></div>
+    </div>
+
+    <div id="otherseries">
+      <div id="lanthrathideseries">
+         <!-- //elementsAllExtra -->
+      <div class="elementsAllExtra " id="start_elements_58__1" ><p class="elementsAllExtrasymbol">101</p><p class="elementsAllExtraName">Lanthanides </p></div>
+         <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements left_Side_elements" id="elements-57"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-58"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-59"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-60"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-61"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-62"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-63"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-64"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-65"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-66"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-67"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-68"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-69"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements" id="elements-70"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , lanthrathideseries_elements right_Side_elements " id="elements-71"></div>
+      </div>
+
+      <div id="anthrathideseires">
+              <!-- //elementsAllExtra -->
+       <div class="elementsAllExtra " id="start_elements_90__1" ><p class="elementsAllExtrasymbol">102</p><p class="elementsAllExtraName">actinides  </p></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements left_Side_elements" id="elements-89"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-90"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-91"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-92"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-93"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-94"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-95"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-96"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-97"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-98"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-99"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-100"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-101"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements" id="elements-102"></div>
+        <div onclick="clicksoundfun()" class="elementsAll , anthrathideseires_elements right_Side_elements" id="elements-103"></div>
+      </div>
+    </div>
+  </div>
+  <script  src="js/vanilla-tilt.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/partricleapp.js"></script>
+  <script>
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+      window.scrollTo(0, 0);
+      }, 900);
+
+      //  querySelector for alll elements
+      for (let i = 1; i <= 118; i++) {
+        this["elements" + i] = document.querySelector(`#elements-${i}`);
+      }
+      //  querySelector for alll moblie elements
+
+      for (let i = 1; i <= 118; i++) {
+        this["Moblie_elements" + i] = document.querySelector(`#moblie_elements-${i}`);
+      }
+ 
+        
+        let listItems = [];
+        let divs = document.querySelectorAll('.Moblie_elementsAll ') ;
+        function lpppp( ) { 
+          for (let i = 0; i < divs.length; i++) {
+            listItems.push(divs.item(i))
+          }
+          listItems.sort( function (a,b){
+            let  compA = a.getAttribute('id').toLowerCase();
+            let  compB = b.getAttribute('id').toLowerCase();
+            return (compA < compB) ? -1 : (compA > compB) ? 1 : 0 ;
+          })
+          for (let i = 0; i < listItems.length; i++) {
+            MoblieTableTBody.appendChild(listItems[i]);
+          }
+      }
+      
+        //  querySelector  for alll onclickcontent elements
+        function onclickdisplaycontent_qurryselector( ) {
+          for (let i = 1; i <= 118; i++) {
+            this["onclickdisplaycontent" + i] = document.querySelector(`#onclickdisplaycontent-${i}`);
+          } 
+        } 
+        function summery_qurryselector( ) {
+          for (let i = 1; i <= 118; i++) {
+            this["summary" + i] = document.querySelector(`#summary-${i -1}`);
+          } 
+        } 
+        function ionization_energies_qurryselector( ) {
+          for (let i = 1; i <= 118; i++) {
+            this["ionization_energies" + i] = document.querySelector(`#ionization_energies-${i}`);
+          } 
+        } 
+       const clicksound =document.querySelector("#click_sound")
+      const Btnclick =  document.querySelector("#btnClick") 
+      const onclickbackgorund = document.querySelector(".onclickbackgorund")
+      const cutoptionmain = document.getElementById("cutoptionimg");
+      const cutoptionmain2 = document.getElementById("cutoptionimg2");
+      const elementsGRID_Class = document.querySelector(".elements")
+      const elementsGRID_ID = document.querySelector("#element")
+      const elementsAll = document.querySelector(".elementsAll");
+      const paraforselctormetal = document.querySelectorAll(".paraforselctormetal");
+      const selectors = document.querySelector("#selectormetals");
+       const AllselectorsOBJ = document.querySelectorAll("#selectormetals p");
+      const alkalimetalsselectorid = document.querySelector(" #alkali-metals-selector-id ");
+      const akilineearthmetalselectorid = document.querySelector( " #akiline-earth-metals-selector-id ");
+      const transitionmetalselectorid = document.querySelector("#transition-metal-selector-id  ");
+      const lanthrathideseriesselectorid = document.querySelector( "#lanthrathideseries-selector-id  ");
+      const anthrathideseiresselectorid = document.querySelector( "#anthrathideseires-selector-id  " );
+      const posttransitionmetalselectorid = document.querySelector( "#post-transition-metal-selector-id ");
+      const metalloidselectorid = document.querySelector(" #metalloid-selector-id " );
+      const othernonmetalselectorid = document.querySelector(" #other-nonmetal-selector-id " );
+      const noblegassesselectorid = document.querySelector( " #noble-gasses-selector-id ");
+      const unknownselectorid = document.querySelector(" #unknown-selector-id ")
+      const cutoptionimg1 = document.querySelector("#cutoptionimg")
+      const cutoptionimg2 = document.querySelector("#cutoptionimg2")
+      const MenuToggle = document.querySelector(".toggle")
+      const sidebar = document.querySelector(".sidebar")
+      const sidebar2 = document.querySelector(".sidebar2")
+      const bodyTag = document.querySelector("body")
+      const BlankForSidebar1 = document.querySelector(".BlankForSidebar")
+      const header = document.querySelector("#header")
+      const search = document.querySelector("#search")
+      const backgroundcontainer = document.querySelector("#background-container")
+      const btncontaniner_header_A = document.querySelector(".btncontaniner_header_A ")
+      const periodictable = document.querySelector("#periodictable") 
+      const particlesJS = document.querySelector("#particles-js")
+      const btncontaninerSidebarcontanierOptimaizations_modes = document.querySelector(".btncontaniner.sidebarcontanier.Customization-modes ")
+      const Customization_selector = document.querySelector("#Customization_selector"); 
+      const switch1 =  document.querySelector("#switch1")
+      const switch2 =  document.querySelector("#switch2")
+      const suggestionsMainCLASS =  document.querySelector(".suggestionsMainCLASS")
+      const table =  document.querySelector(".table")
+      const thead =  document.querySelector("thead")
+      const tr =  document.querySelector("thead tr ")
+       const tablebody =  document.querySelector(".tablebody")
+      const TableDetailstoggle =  document.querySelectorAll("table tbody tr ")
+      const tableAtomicNo =  document.querySelector("#table-AtomicNo")
+      const tableAtomicMass =  document.querySelector("#table-AtomicMass")
+      const tableElementName =  document.querySelector("#table-ElementName")
+      const tableGruop =  document.querySelector("#table-Gruop")
+      const tablePeriod =  document.querySelector("#table-Period")
+      const tableForMore =  document.querySelector("#table-ForMore")
+      const tableclickoptions =  document.querySelectorAll(".table tbody  tr td:nth-child(8).btnTable")
+      const sunmain =  document.querySelector(".sunmain")
+      const planetaMian =  document.querySelector(".planetaMian")
+         // all elements type class
+      const alkali_metals =  document.querySelectorAll(".alkali-metals")
+      const akiline_earth_metals =  document.querySelectorAll(".akiline-earth-metals")
+      const transition_metal =  document.querySelectorAll(".transition-metal")
+      const lanthrathideseries_elements =  document.querySelectorAll(".lanthrathideseries_elements")
+      const anthrathideseires_elements =  document.querySelectorAll(".anthrathideseires_elements")
+      const post_transition_metal =  document.querySelectorAll(".post-transition-metal")
+      const metalloid =  document.querySelectorAll(".metalloid")
+      const other_nonmetal =  document.querySelectorAll(".other-nonmetal")
+      const noble_metals =  document.querySelectorAll(".noble-gasses")
+      const unknown =  document.querySelectorAll(".unknown")
+      
+     const  orientatinalBTn = document.querySelector('.orientatinalBTn')
+     const  ForMoblieElements = document.querySelector('.ForMoblieElements')
+     const  MoblieTableTBody  = document.querySelector('.MoblieTableTBody ')
+     const  MoblieDivTableParts  = document.querySelectorAll('.MoblieDivTableParts ')
+     const  Moblie_allonclickdisplaycontent  = document.querySelectorAll('.Moblie_allonclickdisplaycontent')
+     const  elementsAllExtra  = document.querySelectorAll('.elementsAllExtra ')
+     const  left_Side_elements  = document.querySelectorAll('.left_Side_elements ')
+     const  right_Side_elements = document.querySelectorAll('.right_Side_elements ')
+
+     
+      
+     let Speakbuttons , playEle , stopEle , pauseEle , Moblie_elementsAll , MoblieinnerTD ,Moblie_clickable_Item , IsRotate , orientationType ,IsWidth_550px ;  
+     
+         let viewport =  document.querySelector("meta[name=viewport]");    
+         const initial_width = window.innerWidth;
+         const initial_height = window.innerHeight ;
+         
+     async function get_dataTables_filter () {   let dataTables_filter =  await document.querySelector(".dataTables_filter"); 
+    }
+
+      let selrectormetalsbool = undefined ;
+      let elementsclickchecker = false 
+       
+      let allgruopsnumbers =["1","18","1","2","13","14","15","16","17","18","1","2","13","14","15","16","17","18","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","1","2","101","101","101","101","101","101","101","101","101","101","101","101","101","101","101","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","1","2","102","102","102","102","102","102","102","102","102","102","102","102","102","102","102","4","5","6","7","8","9" , "10" , "11" , "12" , "13" , "14" , "15" ,"16" ,"17" , "18" ]
+
+ 
+ 
+             
+
+      // Computed Style
+      const cutoptionmain1_querySelector_style = getComputedStyle(cutoptionimg1);
+      const cutoptionmain2_querySelector_style = getComputedStyle(cutoptionimg2);
+ 
+
+
+
+         // function  for setting  qurry of  all elements
+       function setting_qurry_FOR_MoblieElements( ) {
+        Moblie_elementsAll  =   document.querySelectorAll('.Moblie_elementsAll ') 
+        MoblieinnerTD =   document.querySelectorAll(' .inner')
+        Moblie_clickable_Item  = document.querySelectorAll('.Moblie_clickable_Item ')
+         
+        Speakbuttons_buttons  = document.querySelectorAll('.Speakbuttons button');
+          playEle  = document.querySelectorAll('.play');
+       pauseEle   = document.querySelectorAll('.pause');
+       stopEle    = document.querySelectorAll('.stop');
+          ONClickListenerON_Moblie_elements();
+        }
+        function removeAll_Speakbuttons_buttons_activebutton_class(){
+          Speakbuttons_buttons.forEach(element => {
+            element.classList.remove("activebutton")
+          });
+        }
+
+        // for Moblie Element click :- For Whole Element
+       /*      function  ONClickListenerON_Moblie_elements( ) { 
+          MoblieinnerTD.forEach(element =>{
+              element.addEventListener('click' , ()=>{
+                let number  = Array.prototype.indexOf.call(MoblieTableTBody.children , element)   
+                remove_activated_Inner_Moblie_elements_(number);
+               MoblieinnerTD[number].classList.toggle("activatedToggleForDivTable")
+              })
+            }) 
+          } 
+          */
+
+        // for Moblie Element click :- only  clickable Item not For Whole Element
+        function  ONClickListenerON_Moblie_elements( ) { 
+          Moblie_clickable_Item.forEach(element  =>{
+              element.addEventListener('click' , ()=>{
+                if (element.parentElement.classList.contains('Clicked_Moblie_Element_class' && elementsclickchecker)) {elementsclickchecker = false; }
+                elementsclickchecker = true;
+                let number  = Array.prototype.indexOf.call(MoblieTableTBody.children , element.parentElement)   
+                remove_activated_Inner_Moblie_elements_(number);
+                remove_Clicked_Moblie_Element_class_Moblie_elements(number);
+                element.parentElement.classList.toggle('Clicked_Moblie_Element_class')
+                MoblieinnerTD[number].classList.toggle("activatedToggleForDivTable")
+                
+                removeAll_Speakbuttons_buttons_activebutton_class();
+               speechSynthesis.cancel();
+                speak('');
+              })
+            }) 
+
+            
+            playEle.forEach(elementName => {
+             elementName.addEventListener('click' , ()=>{
+              removeAll_Speakbuttons_buttons_activebutton_class();
+             let elementinfo  = elementName.parentElement.nextElementSibling; 
+             if (!speechSynthesis.paused) {
+                speechSynthesis.cancel();
+                speak(elementinfo.innerText)
+             }
+             else{
+              speechSynthesis.resume();  
+             }
+             elementName.classList.toggle('activebutton')
+           }) });
+
+           pauseEle.forEach(elementName => {
+             elementName.addEventListener('click' , ()=>{
+               removeAll_Speakbuttons_buttons_activebutton_class();
+               elementName.classList.toggle('activebutton')
+              if (speechSynthesis.speaking) {
+              speechSynthesis.pause();  
+             } 
+           }) });
+
+           stopEle.forEach(elementName => {
+             elementName.addEventListener('click' , ()=>{
+               removeAll_Speakbuttons_buttons_activebutton_class();
+              elementName.classList.toggle('activebutton')
+               speechSynthesis.cancel();
+                speak('');
+            }) });
+          }
+
+           function remove_activated_Inner_Moblie_elements_(numberOfElements){
+             MoblieinnerTD.forEach(element => {
+              let number = Array.prototype.indexOf.call(MoblieTableTBody.children , element.parentElement)   
+               if (number !== numberOfElements ) {
+                 element.classList.remove("activatedToggleForDivTable")
+              }
+            });
+          }
+          function remove_Clicked_Moblie_Element_class_Moblie_elements(numberOfElements){ 
+              Moblie_clickable_Item.forEach(element => {
+              let number = Array.prototype.indexOf.call(MoblieTableTBody.children , element.parentElement)   
+               if (number !== numberOfElements ) {
+                element.parentElement.classList.remove('Clicked_Moblie_Element_class')
+              }
+            });
+            }
+ 
+            function clicksoundfun() {
+            if (searchBool == false  && elementsclickchecker == false) {
+                clicksound.play();
+                }} 
+
+      // function  for add activated class on selectors"
+       function ADD_activatedclassFOR_selectors(classname) {
+        AllselectorsOBJ.forEach(element=> {
+          element.classList.add(classname); 
+          });
+        }
+      // function  for remove activated class on selectors"
+      function remove_activatedclassFOR_selectors(classname) { 
+          AllselectorsOBJ.forEach(element=> {
+            element.classList.remove(classname); 
+          });
+        }
+      // function for "for loop for add activated class on elements"
+      function ADD_activatedclassFOR_ALL_elements(classname) {
+        for(let as = 1 ; as <=118 ; as++  ){
+         document .getElementById(`elements-${as}`).classList.add(classname);
+        }}
+
+      // function for "for loop for removing activated class"
+      function removeactivatedclassFOR_all_elements(classname) {
+        for (let as = 1; as <= 118;  as++  ) {
+        this["elements"+as].classList.remove(classname);
+      }}
+      // function for "for loop for removing activated_elements_onclick   class"
+      function remove_activated_elements_onclickCLASS_ALL_118elements( ) {
+        for (let as = 1; as <= 118;  as++  ) {
+          this["elements"+as].classList.remove("activated_elements_onclick")
+          this["elements"+as].classList.remove("LeftAndRightSideElementsOnclick");
+          this['onclickdisplaycontent'+as].style.display ="none";
+          this["elements"+as].classList.remove("On_click_Element_Cursor")
+       }}
+      // function for remove inline style form all 118 elements
+      function removeInlineSTYLE_OF_118_elements() {
+        for (let as = 1; as <= 118;  as++  ) {
+          this["elements"+as].removeAttribute('style')            
+        } }
+       // function for common click  on Selectors
+      async function  commonONCLICK_Selectors(params , params2 , scrollypara) {
+        if (params2 !== 'mouseover') { 
+           scrollTo(0 , scrollypara)
+        selrectormetalsbool= true
+        await cutoptionfunction("nosilent" );
+        cutoptionimg1.style.display = "flex";
+        cutoptionimg2.style.display = "flex";
+        elementsGRID_ID.classList.add("ACTIVATE_elementsGRID_ID")
+       removeactivatedclassFOR_all_elements('activeted'); }
+      if (elements2.classList.contains("activeted")){
+        removeactivatedclassFOR_all_elements('activeted');
+        clicksound.play(); 
+      }   
+      else{
+         
+        ADD_activatedclassFOR_ALL_elements('activeted');
+               if (params == "alkalimetalsselectorid") {
+                  alkalimetals_remove_activatedCLASSform_elements();
+             }
+             if (params == "akilineearthmetalselectorid") {
+              alkali_earth_metals_remove_activatedCLASSform_elements();
+             }
+             if (params == "transitionmetalselectorid") {
+              transitionMETALS_remove_activatedCLASSform_elements();
+             }
+             if (params == "lanthrathideseriesselectorid") {
+              lanthrathideseries_remove_activatedCLASSform_elements();
+             }
+             if (params == "anthrathideseiresselectorid") {
+              anthrathideseires_remove_activatedCLASSform_elements();
+             }
+             if (params == "posttransitionmetalselectorid") {
+              post_transition_metals_remove_activatedCLASSform_elements();
+             }
+             if (params == "metalloidselectorid") {
+              metalloid_remove_activatedCLASSform_elements();
+             }
+             if (params == "othernonmetalselectorid") {
+              other_non_metals_remove_activatedCLASSform_elements();
+             }
+             if (params == "noblegassesselectorid") {
+              noble_metals_remove_activatedCLASSform_elements();
+             }
+             if (params == "unknownselectorid") {
+              unknownmetals_remove_activatedCLASSform_elements();
+            }  
+          } 
+        }
+       
+      // function for remove activate class from alkali metals
+      function alkalimetals_remove_activatedCLASSform_elements( ) {
+        alkali_metals.forEach(elementf => {
+            elementf.classList.remove('activeted')
+          });
+      }
+
+    // function for remove activate class from akiline earth  metals
+      function alkali_earth_metals_remove_activatedCLASSform_elements( ) {
+        akiline_earth_metals.forEach(elementf => {
+            elementf.classList.remove('activeted')
+          });
+      }
+      // function for remove activate class from transition metals
+      function transitionMETALS_remove_activatedCLASSform_elements( ) {
+        transition_metal.forEach(elementf => {
+            elementf.classList.remove('activeted')
+          });
+      }
+
+      // function for remove activate class from lanthrathideseries metals
+      function lanthrathideseries_remove_activatedCLASSform_elements( ) {
+        lanthrathideseries_elements.forEach(elementf => {
+            elementf.classList.remove('activeted')
+          });
+      }
+         // function for remove activate class from anthrathideseires metals
+      function anthrathideseires_remove_activatedCLASSform_elements( ) {
+        anthrathideseires_elements.forEach(elementf => {
+          elementf.classList.remove('activeted')
+          });
+      }
+
+      // function for remove activate class from post transition  metals
+         function post_transition_metals_remove_activatedCLASSform_elements( ) {
+             post_transition_metal.forEach(elementf => {
+              elementf.classList.remove('activeted')
+           });
+      }
+         // function for remove activate class from metalloid metals
+      function metalloid_remove_activatedCLASSform_elements( ) {
+        metalloid.forEach(elementf => {
+          elementf.classList.remove('activeted')
+           });
+      }
+
+      // function for remove activate class from other non metals
+      function other_non_metals_remove_activatedCLASSform_elements( ) {
+        other_nonmetal.forEach(elementf => {
+          elementf.classList.remove('activeted')
+           });
+      }
+
+      // function for remove activate class from noble gasses  metals
+      function noble_metals_remove_activatedCLASSform_elements( ) {
+        noble_metals.forEach(elementf => {
+          elementf.classList.remove('activeted')
+           });
+      }
+      
+      // function for remove activate class from unknown metals
+      function unknownmetals_remove_activatedCLASSform_elements( ) {
+        unknown.forEach(elementf => {
+          elementf.classList.remove('activeted')
+           }); 
+      }
+      // function for zIndex-1 to all selectors on click elements
+      function selector_zIndex_1() { 
+          AllselectorsOBJ.forEach(elementf => {
+          elementf.style.zIndex = "1";
+           }); 
+      }
+      // function for onclick on common content 118 elements
+        function Common_FOR_all_118Elements(params) {
+          if (!elementsclickchecker &&  searchBool == false  ) { 
+              cutoptionimg1.click();
+               elementsclickchecker = true;
+               selector_zIndex_1();
+           ADD_activatedclassFOR_ALL_elements('activeted');
+              particlesJS.classList.add("activeteBLured")
+              backgroundcontainer.classList.add("activeteBLured")
+              header.classList.add("activeteBLured")
+              header.removeAttribute('style')            
+              selectors.classList.add("activeted")
+              onclickbackgorund.classList.add("activated_span")
+              elementsAllExtra.forEach(elemEX =>{elemEX.classList.add("activeted") })
+            setTimeout(() => {
+            this["elements"+params].classList.add("activated_elements_onclick")
+            this["elements"+params].classList.add("On_click_Element_Cursor")
+            this["elements"+params].classList.remove("activeted") 
+          document.getElementById( `onclickdisplaycontent-${params}`).style.display = "flex";
+            cutoptionimg1.style.display="flex"
+            cutoptionimg2.style.display="flex"
+               }, 300);
+          clicksound.play();
+        } 
+      }
+       let  endselector ;
+      // function for cutoption 
+      function cutoptionfunction(silent  ) {
+        if (silent !== 'silent') {clicksound.play();   }
+         if (silent == 'silent') {selrectormetalsbool =  false  }
+        if (silent == undefined) {selrectormetalsbool =  false  }
+          elementsclickchecker = false;
+         alkalimetalsselectorid.classList.remove("selector_active")
+        cutoptionmain2.style.display = "none";
+        cutoptionmain.style.display = "none";
+        backgroundcontainer.style.filter="none"
+        header.style.filter="none"
+         elementsGRID_ID.classList.remove("ACTIVATE_elementsGRID_ID")
+        particlesJS.removeAttribute("style");
+        particlesJS.classList.remove("activeteBLured")
+        onclickbackgorund.classList.remove("activated_span")
+        selectors.classList.remove("activeted")
+        elementsAllExtra.forEach(elemEX =>{elemEX.classList.remove("activeted") })
+         removeInlineSTYLE_OF_118_elements();
+         removeactivatedclassFOR_all_elements('activeted');
+         remove_activatedclassFOR_selectors();
+         remove_activated_elements_onclickCLASS_ALL_118elements();
+      }
+ 
+    window.onscroll =  ()=>{
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                   selectors.classList.add('scrollActiveSelector') 
+                } else {
+           selectors.classList.remove('scrollActiveSelector')
+                } 
+    }  
+    let name = [],atomic_mass = [],symbol = [],number = [],appearance = [],boil = [],category = [],color = [],density = [],discovered_by = [],melt = [],molar_heat = [],named_by = [],period = [],phase = [],source = [],spectral_img = [],summary = [],xpos = [],ypos = [],shells = [],electron_configuration = [],electron_configuration_semantic = [],electron_affinity = [],electronegativity_pauling = [],ionization_energies = [];
+    let moreSummery = [] , familes = []
+
+      async function all() {
+      await fetch("data/data.json")
+        .then(  (respon) => {
+          return respon.json();
+        })
+        .then(  (data)=> {
+          for (let s = 0; s <= 118;) {
+            name[s] = data.elements[s].name;atomic_mass[s] = data.elements[s].atomic_mass;symbol[s] = data.elements[s].symbol;appearance[s] = data.elements[s].appearance;boil[s] = data.elements[s].boil;category[s] = data.elements[s].category;color[s] = data.elements[s].color;density[s] = data.elements[s].density;discovered_by[s] = data.elements[s].discovered_by;melt[s] = data.elements[s].melt;molar_heat[s] = data.elements[s].molar_heat;named_by[s] = data.elements[s].named_by;period[s] = data.elements[s].period;phase[s] = data.elements[s].phase;source[s] = data.elements[s].source;spectral_img[s] = data.elements[s].spectral_img;summary[s] = data.elements[s].summary;xpos[s] = data.elements[s].xpos;ypos[s] = data.elements[s].ypos;shells[s] = data.elements[s].shells;electron_configuration[s] =data.elements[s].electron_configuration;electron_configuration_semantic[s] =data.elements[s].electron_configuration_semantic;electron_affinity[s] = data.elements[s].electron_affinity;electronegativity_pauling[s] =data.elements[s].electronegativity_pauling;ionization_energies[s] = data.elements[s].ionization_energies;
+            s++;
+          }
+        });
+
+        await fetch("data/MoreData.json")
+            .then(  (respon2)=> {
+               return respon2.json();
+            }) 
+         .then(  (data)=> {
+           for (let s = 0; s <= 118;) {
+            moreSummery[s] = data.moreSummery[s] ; familes[s] = data.Allfamilynames[s] ; 
+            s++;  }
+        });
+
+
+       // some extra feautres in it link if present or not
+      for (let asss = 0; asss <= 118; asss++) {
+        if (spectral_img[asss] == null) {
+          spectral_img[asss] = "not avalable";
+        }
+        atomic_mass[asss] = atomic_mass[asss].toFixed(2);
+        atomic_mass[asss] = parseFloat(atomic_mass[asss])         
+         }
+
+       for (let x = 0; x <  118; x++) {
+         this['elements' + [x+1]].innerHTML += `<p class="Atomic_number" >${[x+1]}</p>  
+         <p class="Elements_short_name" >${symbol[x]}</p> 
+         <p class="Elements_full_name">${name[x]}</p> 
+         <p class="atomic_mass">${atomic_mass[x]}</p> <div class="allonclickdisplaycontent"id="onclickdisplaycontent-${x+1}"> <div class ="summary"id="summary-${x}">summary = ${summary[x]} </div>  <div class ="appearance"id="appearance{x}" >appearance = ${appearance[x]}</div> <div class ="boil" id="boil-${x}" >boiling point = ${boil[x] }   <sup>o</sup> C</div> <div class ="category"id="category-${x}"> category = ${category[x]}</div> <div class="color" id="color-${x}">color = ${color[x]}</div><div class ="density"id="density-${x}" >density = ${density[x]}</div> <div class = "discovered_by"id="discovered_by-${x}" >Discovered by = ${discovered_by[x]}</div>  <div class ="melt"id="melt-${x}">melting point = ${melt[x]}</div><div class ="molar_heat" id="molar_heat-${x}">molar heat = ${molar_heat[x]}</div> <div class = "named_by"id="named_by-${x}" >named by =  ${named_by[x]}</div> <div class  ="period"id="period-${x}">period = ${period[x]}</div> <div class  ="phase" id="phase-${x}">phase= ${phase[x]}</div><div class ="source" id="source-${x}}" >For more information = <a href="${source[x] }" target="_blank" rel="noopener noreferrer">${source[x] }</a></div> <div class ="spectral_img"id="spectral_img-${x}" >spectral img =  <a href=" ${spectral_img[x]}" target="_blank" rel="noopener noreferrer"> ${spectral_img[x] }</a> </div><div class ="phase"id="phase-${x}">phase = ${phase[x]}</div><div class="xpos"id="xpos-${x}" >xpos = ${xpos[x]}</div><div class ="ypos"id="ypos-${x}" >ypos = ${ypos[x]}</div> <div class="electron_configuration"id="electron_configuration-${x}" >electron configuration = ${electron_configuration[x]}</div> <div class ="electron_configuration_semantic"id="electron_configuration_semantic-${x}" >electron configuration semantic = ${electron_configuration_semantic[x]}</div><div class="electron_affinity"id="electron_affinity-${x}">electron affinity = ${electron_affinity[x]}</div><div class="electronegativity_pauling"id="electronegativity_pauling-${x}" >electronegativity pauling = ${electronegativity_pauling[x]}</div>      <div class="ionization_energies"id="ionization_energies-${x}" >ionizationenergies  = ${ionization_energies[x] }</div>   </div> `;
+
+         this['Moblie_elements' + [x+1]].innerHTML +=  `<div class="MoblieDivTableParts Moblie_clickable_Item MoblieAtomicNumber">${x+1}</div> <div class="MoblieDivTableParts Moblie_clickable_Item MoblieSymbol">${symbol[x]}</div> <div class="MoblieDivTableParts Moblie_clickable_Item MoblieAtomicmass">${atomic_mass[x]}</div> <div class="MoblieDivTableParts Moblie_clickable_Item MoblieElementName">${name[x]}</div> <div class="MoblieDivTableParts Moblie_clickable_Item MoblieGruop">${allgruopsnumbers[x]}</div> <div class="MoblieDivTableParts Moblie_clickable_Item Moblieperiod">${period[x]}</div> <div class="MoblieDivTableParts inner "> <div class="elementsAll alkali-metals>"> <p class="Moblie_Atomic_number" >${[x+1]}</p> <p class="Moblie_Elements_short_name" >${symbol[x]} </p> <p class="Moblie_Elements_full_name">${name[x]}</p> <p class="Moblie_atomic_mass">${atomic_mass[x]}</p> </div> <div class="Speakbuttons"> <button class = 'play'></button> &nbsp; <button class = 'pause'></button> &nbsp; <button class = 'stop'></button> </div> <div class="Moblie_allonclickdisplaycontent" id="Moblie_onclickdisplaycontent-${x+1}"> <div class="Moblie_summary" id="Moblie_summary-${x}">summary = ${summary[x]} \n ${moreSummery[x]}</div> <div class="Moblie_appearance" id="Moblie_appearance{x}">appearance = ${appearance[x]}</div> <div class="Moblie_boil" id="Moblie_boil-${x}">boiling point = ${boil[x] } <sup>o</sup> C</div> <div class="Moblie_category" id="Moblie_category-${x}"> category = ${category[x]}</div> <div class="Moblie_color" id="Moblie_color-${x}">color = ${color[x]}</div> <div class="Moblie_density" id="Moblie_density-${x}">density = ${density[x]}</div> <div class="Moblie_discovered_by" id="Moblie_discovered_by-${x}">Discovered by = ${discovered_by[x]}</div> <div class="Moblie_melt" id="Moblie_melt-${x}">melting point = ${melt[x]}</div> <div class="Moblie_molar_heat" id="Moblie_molar_heat-${x}">molar heat = ${molar_heat[x]}</div> <div class="Moblie_named_by" id="Moblie_named_by-${x}">named by = ${named_by[x]}</div> <div class="Moblie_period" id="Moblie_period-${x}">period = ${period[x]}</div> <div class="Moblie_phase" id="Moblie_phase-${x}">phase= ${phase[x]}</div> <div class="Moblie_source" id="Moblie_source-${x}}">For more information = <a href="${source[x] }" target="_blank" rel="noopener noreferrer">${source[x] }</a></div> <div class="Moblie_spectral_img" id="Moblie_spectral_img-${x}">spectral img = <a href=" ${spectral_img[x]}" target="_blank" rel="noopener noreferrer"> ${spectral_img[x] }</a> </div> <div class="Moblie_phase" id="Moblie_phase-${x}">phase = ${phase[x]}</div> <div class="Moblie_xpos" id="Moblie_xpos-${x}">xpos = ${xpos[x]}</div> <div class="Moblie_ypos" id="Moblie_ypos-${x}">ypos = ${ypos[x]}</div> <div class="Moblie_electron_configuration" id="Moblie_electron_configuration-${x}">electron configuration = ${electron_configuration[x]}</div> <div class="Moblie_electron_configuration_semantic" id="Moblie_electron_configuration_semantic-${x}">electron configuration semantic = ${electron_configuration_semantic[x]}</div> <div class="Moblie_electron_affinity" id="Moblie_electron_affinity-${x}">electron affinity = ${electron_affinity[x]}</div> <div class="Moblie_electronegativity_pauling" id="Moblie_electronegativity_pauling-${x}">electronegativity pauling = ${electronegativity_pauling[x]}</div> <div class="Moblie_ionization_energies" id="Moblie_ionization_energies-${x}">ionizationenergies = ${ionization_energies[x] }</div> `  
+       }
+         onclickdisplaycontent_qurryselector();
+        summery_qurryselector();
+        ionization_energies_qurryselector();
+        remove_activated_elements_onclickCLASS_ALL_118elements();
+        setting_qurry_FOR_MoblieElements();
+      }
+    all();  
+        function atomicmasfix( ) {   
+        for (let asss = 0; asss <= 118; asss++) {
+        if (spectral_img[asss] == null) {
+          spectral_img[asss] = "not avalable";
+        }
+        atomic_mass[asss] = atomic_mass[asss].toFixed(2);
+        atomic_mass[asss] = parseFloat(atomic_mass[asss])         
+         }
+   }  
+            scrollYpara_ARRry_for_selectors = [ 275 , 300 ,320 ,580 ,600 ,300, 170 ,120 ,200 ,400 ] 
+             AllselectorsOBJ.forEach(elementf => {
+              elementf.addEventListener('click' ,()=>{ 
+                commonONCLICK_Selectors(elementf.classList[1] , "click" ,scrollYpara_ARRry_for_selectors[Array.prototype.indexOf.call(selectors.children , elementf)]); 
+                })
+                elementf.addEventListener('mouseenter' ,()=>{ 
+                  if (!selrectormetalsbool && !elementsclickchecker) {
+                  commonONCLICK_Selectors(elementf.classList[1] , "mouseover" ,scrollYpara_ARRry_for_selectors[Array.prototype.indexOf.call(selectors.children , elementf)]); 
+                    }
+                })
+              elementf.addEventListener('mouseleave' ,()=>{ 
+                          if (!selrectormetalsbool &&  !elementsclickchecker) {
+                              cutoptionfunction('silent'); 
+                            }
+                          }); 
+              }); 
+ 
+    for (let ass = 1; ass <= 118; ass++) {
+      this['elements'+ass].addEventListener("click", () => {
+        Common_FOR_all_118Elements(ass);
+        });  
+       }     
+ 
+       cutoptionmain.addEventListener("click", () => {  
+      cutoptionfunction();
+    }); 
+    cutoptionmain2.addEventListener("click", () => {
+      cutoptionfunction();
+    });
+ 
+    for (let ass = 1; ass <=118; ass++) { 
+        this['elements'+ass].addEventListener("mouseenter" ,()=>{
+           if (searchBool == false &&  elementsclickchecker == false &&  cutoptionmain1_querySelector_style.display == "none" ) {
+            this['elements'+ass].style.transform = `scale(1.7)  skew( ${Math.random() * 12 }deg , ${Math.random() * -12 }deg )`;  // for more effect skew(8deg , -8deg)
+            this['elements'+ass].animationName="elementsanimation";   
+            this['elements'+ass].style.zIndex="3";   
+ 
+            } }) }
+
+    for (let ass = 1; ass <=118; ass++) {
+        this['elements'+ass].addEventListener("mouseleave" ,()=>{
+           if ( searchBool == false &&  elementsclickchecker == false &&  cutoptionmain1_querySelector_style.display == "none"   ) {
+               this["elements"+ass].removeAttribute('style')     
+            } }) }
+
+            let Both_left_And_Right_Side_elementsOBJ_scrollY = [60, 40 ,50 , 70 , 180 , 240 , 400 , 400 , 400 ]
+            
+            left_Side_elements.forEach(element   => { 
+              let num = Array.prototype.indexOf.call(left_Side_elements , element)
+               element.addEventListener("click", () => { 
+              if (searchBool == false) {
+                setTimeout(() => {
+                  element.style.transform = "scale(3.0) translate(3vw  ,0vw";
+                }, 601);  scrollTo(0, Both_left_And_Right_Side_elementsOBJ_scrollY[num]); }
+            });      });
+
+            right_Side_elements.forEach(element   => { 
+              let num = Array.prototype.indexOf.call(right_Side_elements , element)
+               element.addEventListener("click", () => { 
+              if (searchBool == false) {
+                setTimeout(() => {
+                  element.style.transform = "scale(3.0) translate(-3vw  ,0vw";
+                }, 601);  scrollTo(0, Both_left_And_Right_Side_elementsOBJ_scrollY[num]); }
+            });      });
+ 
+ 
+
+    group1_2_3_4_lan_antr =[1 ,3 ,4 ,11 ,19 , 37 , 55 , 87 ,4 ,12, 20 , 38 , 56 , 88 , 21 , 39 ,22 , 40 , 72 , 104 , 57 , 89]
+    group5_lan_antr_TO_group12 =[23 , 41 , 73 , 105 , 58 , 90]
+    group13_lan_antr_TO_group17 =[5 , 13 , 31 , 49 , 81 , 113,66, 98]
+    group18_lan_antr=[2 , 10 , 18 , 36 , 54 , 86, 118, 71, 103]
+ 
+     group1_2_3_4_lan_antr.forEach(num => {
+        this['elements'+num].addEventListener("click", () => {
+           this[`onclickdisplaycontent`+ num].style.width = "22vw";
+         });  }); 
+  
+     group5_lan_antr_TO_group12.forEach(num => {
+        this['elements'+num].addEventListener("click", () => {
+           this[`onclickdisplaycontent`+ num].style.width = "21.6vw";
+              this[`onclickdisplaycontent`+ num].style.transform = "translate(13.5vw, -4.2vw) ";
+         });  }); 
+     group5_lan_antr_TO_group12.forEach(num  => {
+       // gruop 6
+        this['elements'+[num + 1]].addEventListener("click", () => {
+             this[`onclickdisplaycontent`+ [num + 1]].style.width = "19.6vw";
+              this[`onclickdisplaycontent`+ [num + 1]].style.transform = "translate(12.65vw, -10.5vw) ";
+              this["summary"+ [num+1]].style.transform = "translateX(-13vw) ";
+              this["summary"+ [num + 1]].style.width = "30vw ";
+ 
+         });  }); 
+     group5_lan_antr_TO_group12.forEach(num  => {
+       // gruop 7
+        this['elements'+[num + 2]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 2]].style.width = "18.2vw";
+              this[`onclickdisplaycontent`+ [num + 2]].style.transform = "translate(11.65vw, -10.5vw) ";
+              this["summary"+ [num + 2]].style.transform = "translateX(-14vw) ";
+              this["summary"+ [num + 2]].style.width = "30vw ";
+            });  });  
+     group5_lan_antr_TO_group12.forEach(num  => {
+              // gruop 8
+               this['elements'+[num + 3]].addEventListener("click", () => {
+                   this[`onclickdisplaycontent`+ [num +3]].style.width = "16.5vw";
+                     this[`onclickdisplaycontent`+ [num+3]].style.transform = "translate(10.8vw, -9.6vw) ";
+                     this["summary"+ [num + 3]].style.transform = "translateX(-14vw) ";
+                     this["summary"+ [num +3]].style.width = "30vw ";
+                     this[`ionization_energies`+ [num +3]].style.width = "16vw ";
+                });  });  
+     group5_lan_antr_TO_group12.forEach(num  => {
+      // gruop 9
+      this['elements'+[num + 4]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 4]].style.width = "14vw";
+            this[`onclickdisplaycontent`+ [num + 4]].style.transform = "translate(9.7vw, -9.6vw) ";
+            this["summary"+ [num + 4]].style.transform = "translateX(-17vw) ";
+            this["summary"+ [num + 4]].style.width = "30vw ";
+            this[`ionization_energies`+ [num +4]].style.width = "14vw ";
+       });  });  
+      group5_lan_antr_TO_group12.forEach(num  => {
+      // gruop 10
+      this['elements'+[num + 5]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 5]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 5]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 5]].style.right = "18vw";
+             this["summary"+ [num + 5]].style.width = "30vw ";
+            this[`ionization_energies`+ [num +5]].style.width = "14vw ";
+       });  });  
+     group5_lan_antr_TO_group12.forEach(num  => {
+      // gruop 11
+      this['elements'+[num + 6]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 6]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 6]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 6]].style.right = "19vw";
+             this["summary"+ [num + 6]].style.width = "30vw ";
+            this[`ionization_energies`+ [num +6]].style.width = "14vw ";
+       });  });  
+     group5_lan_antr_TO_group12.forEach(num  => {
+      // gruop 12
+      this['elements'+[num + 7]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 7]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 7]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 7]].style.right = "21vw";
+             this["summary"+ [num + 7]].style.width = "30vw ";
+            this[`ionization_energies`+ [num +7]].style.width = "14vw ";
+       });  }); 
+      group13_lan_antr_TO_group17.forEach(num  => {
+      // gruop 13
+      this['elements'+[num]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num]].style.right = "23vw";
+          this[`onclickdisplaycontent`+ [num]].style.top = "1.3vw";
+             this["summary"+ [num]].style.width = "30vw ";
+            this[`ionization_energies`+ [num]].style.width = "14vw ";
+       });  }); 
+     group13_lan_antr_TO_group17.forEach(num  => {
+      // gruop 14
+      this['elements'+[num + 1]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 1]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 1]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 1]].style.right = "25vw";
+          this[`onclickdisplaycontent`+ [num + 1]].style.top = "1.3vw";
+             this["summary"+ [num + 1]].style.width = "30vw ";
+            this[`ionization_energies`+ [num + 1]].style.width = "14vw ";
+       });  }); 
+     group13_lan_antr_TO_group17.forEach(num  => {
+      // gruop 15
+      this['elements'+[num + 2]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 2]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 2]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 2]].style.right = "27vw";
+          this[`onclickdisplaycontent`+ [num + 2]].style.top = "1.3vw";
+             this["summary"+ [num + 2]].style.width = "30vw ";
+            this[`ionization_energies`+ [num + 2]].style.width = "14vw ";
+       });  }); 
+     group13_lan_antr_TO_group17.forEach(num  => {
+      // gruop 16
+      this['elements'+[num + 3]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 3]].style.width = "14vw";
+          this[`onclickdisplaycontent`+ [num + 3]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 3]].style.right = "29vw";
+          this[`onclickdisplaycontent`+ [num + 3]].style.top = "1.3vw";
+             this["summary"+ [num + 3]].style.width = "30vw ";
+            this[`ionization_energies`+ [num + 3]].style.width = "14vw ";
+       });  }); 
+     group13_lan_antr_TO_group17.forEach(num  => {
+      // gruop 17
+      this['elements'+[num + 4]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num + 4]].style.width = "14vw";   
+          this[`onclickdisplaycontent`+ [num + 4]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num + 4]].style.right = "31vw";
+          this[`onclickdisplaycontent`+ [num + 4]].style.top = "1.3vw";
+             this["summary"+ [num + 4]].style.width = "30vw ";
+            this[`ionization_energies`+ [num + 4]].style.width = "14vw ";
+       });  }); 
+     group18_lan_antr.forEach(num  => {
+      // gruop 18
+      this['elements'+[num]].addEventListener("click", () => {
+          this[`onclickdisplaycontent`+ [num]].style.width = "14vw";   
+          this[`onclickdisplaycontent`+ [num]].style.position = "absolute";
+          this[`onclickdisplaycontent`+ [num]].style.right = "28vw";
+          this[`onclickdisplaycontent`+ [num]].style.top = "5vw";
+             this["summary"+ [num]].style.width = "23.5vw ";
+            this[`ionization_energies`+ [num]].style.width = "14vw ";
+       });  });  
+ 
+    function togglemenu(){
+      if (!search.classList.contains("activeteSearch")) {
+       let ToggleMenuBOOL = true
+         MenuToggle.classList.toggle("activatedMenuClass")
+      sidebar.classList.toggle("activatedMenuClass")
+       sidebar2.classList.toggle("activatedMenuClass")
+        BlankForSidebar1.classList.toggle("activatedBlankForSidebarClass")
+       bodyTag.classList.toggle("activeBody_DisableSrolling")
+       header.classList.toggle("activeteBLured")
+       backgroundcontainer.classList.toggle("activeteBLured")
+       periodictable.classList.toggle("activeteBLured")
+      }
+      else{
+        searchBool = false
+        bodyTag.classList.remove("activeteSearch")
+        header.classList.remove("activeteSearch")
+        search.classList.remove("activeteSearch")
+         btncontaniner_header_A.classList.remove("activeteSearch")
+         MenuToggle.classList.remove("activeteSearch")
+          removeactivatedclassFOR_all_elements('activeted');
+         remove_activatedclassFOR_selectors('activeted');
+          let searchvalue  =  search.value
+        search.value =null
+        search.ariaPlaceholder = "search elements"
+       }
+    }
+      let searchBool = false ;
+      function addsearch(){
+        searchBool = true
+         bodyTag.classList.add("activeteSearch")
+         header.classList.add("activeteSearch")
+        search.classList.add("activeteSearch")
+         MenuToggle.classList.add("activeteSearch")
+         btncontaniner_header_A.classList.add("activeteSearch")
+          ADD_activatedclassFOR_selectors('activeted');
+         ADD_activatedclassFOR_ALL_elements('activeted');
+       }
+     
+      Customization_selector.addEventListener("click", () => { 
+        btncontaninerSidebarcontanierOptimaizations_modes.classList.toggle("activatedMenuClass")
+         Customization_selector.classList.toggle("activatedMenuClass")
+         for (let a =1; a <=7 ; a++) {
+           document.querySelector(`#directBTN_${a}`).classList.toggle("sidebarbtns")
+           document.querySelector(`#directBTN_${a}`).classList.toggle("directbtnFALSE")
+         }
+        });
+ 
+         function  onClickonSwitch(params ) { 
+           Btnclick.play(); 
+           if (params =='btn1') {
+             switch1.classList.toggle("on")
+            sunmain.classList.toggle("toggleNone")
+           }
+          else if (params == 'btn2') {
+             switch2.classList.toggle("on")
+            planetaMian.classList.toggle("toggleNone")
+           }
+           /*temp
+           else if (params == 'btn3') {
+             switch3.classList.toggle("on")
+            particlesJS.classList.toggle("DISPLAYNone")
+            particlesJS.classList.toggle("toggleNone")
+           }
+           */
+            else if (params == 'btn3') {
+             switch3.classList.toggle("on")
+            bodyTag.classList.toggle("add_Drop-shadow_Filters")
+            }   }
+ 
+            suggestionsMainCLASS.addEventListener('scroll' ,()=>{ 
+              let  ALLInputth =  document.querySelectorAll("thead tr:nth-child(2) th ")
+              ALLInputth.forEach(element => {
+              element.firstElementChild.classList.add("inputOnscroll")
+            });
+            if (suggestionsMainCLASS.scrollTop <= 50 ) {
+               ALLInputth.forEach(element => {
+              element.firstElementChild.classList.remove("inputOnscroll")
+            });
+          }   })
+          
+            function onclickONBtntable(params) { 
+                IsWidth_550px  = (window.screen.width  <= 550  ) ?  true  : false; 
+              if (!IsWidth_550px) {
+                togglemenu();
+                this["elements" + params].click(); 
+              }
+             else if(IsWidth_550px){
+                togglemenu();
+                Moblie_elementsAll[params -1 ].firstElementChild.click(); 
+               }
+            } 
+          orientatinalBTn.addEventListener('click' , ()=>{
+            window.screen.orientation.lock('landscape-primary')
+          })  
+           const  speak = (message)=>{
+              let speech =  new SpeechSynthesisUtterance(); 
+               speech.text = message;
+              speech.volume = 1;
+              speech.pitch = 1;
+              speech.rate = 1; 
+              window.speechSynthesis.speak(speech); 
+           } 
+           tableclickoptions.forEach(elementdd => {
+              elementdd.addEventListener('mouseenter',()=>{
+            elementdd.parentElement.classList.add("onHOverBTntable_TR")   }) 
+            elementdd.addEventListener('mouseleave',()=>{
+            elementdd.parentElement.classList.remove("onHOverBTntable_TR")   })
+           });
+           
+            viewport.setAttribute("content" , "height=" + initial_height + "px , width=device-width" +  ", initial-scale =1.0"); 
+          
+              addEventListener('orientationchange' , (event)=>{
+                IsWidth_550px  = (window.screen.width  <= 550  ) ?  true  : false;   
+                if (IsWidth_550px) {
+                  viewport.setAttribute("content" , "height=" + initial_height + "px , width=device-width" +", initial-scale =1.0"); 
+                }
+                else if(!IsWidth_550px){
+                  viewport.setAttribute("content" ,  " width=device-width" +", initial-scale =1.0"); 
+                  elementsclickchecker = (elementsclickchecker) ? false : false
+                } 
+              })
+             
+               onbeforeunload = ()=>{
+               speechSynthesis.cancel();
+                              speak(''); 
+               }
+        
+              
+               </script>
+
+ </body>
+</html>

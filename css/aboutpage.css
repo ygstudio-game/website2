@@ -1,0 +1,71 @@
+img.max-width-xs {
+    width: 85%;
+    box-shadow: 0 0 2.5vw 0.4vw black, inset 0 0 0.7vw 2.4vw black;
+     border-radius: 13% 0;
+     display: block;
+  } 
+ h1 {
+     border-bottom: dotted 2px black;
+    display: inline-block;
+    margin: 5vw 0 2.5vw;
+ }
+ h2 {
+    font-family: 'Euphoria Script';
+    font-size: 2vw;
+ }
+ 
+ .fa {
+    font-size: 1.6em;
+    color: white;
+    float: center;
+ }
+ .fa-envelope {
+    font-size: 1em;	 
+ }
+ text-center {
+    text-align: center;	
+ }
+ /* ID Selector */
+ #title {
+    font-size: 2.2vw;
+    font-family: 'Euphoria Script';
+ }
+ #about-me-box {
+    margin: 2.5vw 0;
+    background: radial-gradient(#fcf7f7e5 , #b6a2a257); 
+    box-shadow: -1vw 0.4vw 2vw 1.2vw rgb(0 0 0);
+    display: block;
+    padding: 2vh 4vh;
+    border-radius: 8% 0 8%;
+  }
+ #check-this-out-box {
+    padding: 0.5vw; 
+    border: 0.05vw solid #ccc;
+    border-radius: 0.26px;
+    font-size: 0.5vw;
+ } 
+ #about-me{
+    padding: 8vh;
+    font-size: 1.35vw;
+    color: black !important; 
+ }
+ @media (max-width: 767px) {
+    #about-me {
+        padding: 6vh 3vh 3vh 3vh;	
+    }
+    #about-me-box {
+      padding: 0 0.5vw;	
+    border-radius: 3%   2%   ;
+  }
+     .hidden-xs {
+        display: none;
+    }
+    .max-width-xs {
+        width: 100%;
+         margin: 2vh auto; 
+ } 
+ .text-center ~ p{
+    font-size: 3vw;
+    margin: 0  2vh;
+ }
+ }
