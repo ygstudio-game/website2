@@ -27,8 +27,7 @@ a {
 body {
   margin: 0;
   width: 100%;
-  height: 100vh;
-  font-family: "Montserrat", sans-serif;
+   font-family: "Montserrat", sans-serif;
   background-color: #343d4b;
   display: flex;
   flex-direction: column;
@@ -490,6 +489,10 @@ label {
 .deactivate {
   transform: translate(100%);
   opacity: 0;
+  -webkit-transform: translate(100%);
+  -moz-transform: translate(100%);
+  -ms-transform: translate(100%);
+  -o-transform: translate(100%);
 }
 
 .deactivate.contentoncurent {
@@ -623,6 +626,7 @@ label {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0.8vw;
   padding: 1vw;
+  width: 98%;
 }
 
 .search-wrapper .input-holder{
@@ -638,7 +642,8 @@ label {
 }
 .search-wrapper.active .input-holder  {
   height: 4.375rem;
-  width: 43.125rem;
+  /* width: 43.125rem; */
+  width: 98%;
   border-radius: 1.375rem;
   background: rgba(0, 0, 0, 0.5);
   transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
@@ -780,3 +785,56 @@ label {
   left: 0px;
   top: 0.625rem;
 }
+@media only screen and (max-width: 990px) {
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.today-info { 
+  width: 64vw;
+  grid-gap: 0vw 7vw;
+  grid-template-columns: auto !important;
+}
+.search-wrapper.active .close{
+  right: -0.2vw;
+}
+.search-wrapper.active {
+  height: 70vh;
+  transform: translatey(-75%);
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3.8vw;
+  padding: 2vw;
+  width: 98%;
+  top: 0;
+}
+.contentoncurent{
+  flex-direction: column;
+  height: 150vh !important;
+ }
+
+.contentoncurent>.weather-side{
+   width: 78%;
+}
+.outer { 
+  width: 19.8vw;
+  height: 8.8vw;
+}
+
+.heading:hover > span {
+  background-image: linear-gradient(to left, rgb(255, 252, 255), rgb(21, 218, 109));
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0px black !important;
+  text-stroke: 0px navy !important;
+  font-size: 2.2rem;
+}
+.heading:hover {
+  transform: perspective(18.5vw) rotateY(3deg) scale(1.11); 
+}
+.deactivate{
+  transform: translate(-100%); 
+}
+}
+  

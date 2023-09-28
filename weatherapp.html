@@ -260,6 +260,7 @@
     var container2 = $('.today-info');
     if (!container.hasClass('active')) {
       container.addClass('active');
+      scrollTo(0,0)
       container2.addClass('active');
       evt.preventDefault();
     }
